@@ -1,0 +1,33 @@
+import express from "express";
+import axios from "axios";
+import bodyParser from "body-parser";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const app = express();
+const port = 3000;
+const API_URL = "http://api.weatherapi.com/v1";
+const API_KEY = "8ffd38753e65441394a153617251909";
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/views/index.html");
+});
+
+app.post("/today", async (req, res) => {
+  const locInput = req.body["loc"];
+  
+  try {
+    const result = await axios.get(API_URL + "/current.json?key=" + API_KEY + "&q=" + locInput);
+    console.log(result.data);
+    res.render("today.ejs", result);
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
