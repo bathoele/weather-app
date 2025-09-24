@@ -17,16 +17,29 @@ app.get("/", (req, res) => {
 });
 
 app.post("/today", async (req, res) => {
-  const locInput = req.body["loc"];
+  const locInput = req.body["loc"] || req.body["submit"];
   
   try {
     const forecastResult = await axios.get(API_URL + "/forecast.json?key=" + API_KEY + "&q=" + locInput + "&days=1");
-    console.log(forecastResult.data.forecast.forecastday[0].day);
     res.render("today.ejs", { data: forecastResult.data});
   } catch (error) {
     console.log(error);
   }
 });
+
+app.post("/hourly", async (req, res) => {
+  const locInput = req.body["loc"] || req.body["submit"];
+
+  try {
+    const forecastResult = await axios.get(API_URL + "/forecast.json?key=" + API_KEY + "&q=" + locInput + "&days=3");
+    console.log(forecastResult.data.forecast.forecastday[0].hour);
+    res.render("hourly.ejs", { data: forecastResult.data,
+                               forecast: forecastResult.data.forecast.forecastday
+    });
+  } catch (erro) {
+    console.log(error);
+  }
+})
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
