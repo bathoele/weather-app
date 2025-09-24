@@ -32,9 +32,10 @@ app.post("/hourly", async (req, res) => {
 
   try {
     const forecastResult = await axios.get(API_URL + "/forecast.json?key=" + API_KEY + "&q=" + locInput + "&days=3");
-    console.log(forecastResult.data.forecast.forecastday[0].hour);
+    console.log(forecastResult.data.forecast.forecastday);
+
     res.render("hourly.ejs", { data: forecastResult.data,
-                               forecast: forecastResult.data.forecast.forecastday
+                               forecastday: forecastResult.data.forecast.forecastday
     });
   } catch (erro) {
     console.log(error);
