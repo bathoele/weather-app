@@ -20,9 +20,9 @@ app.post("/today", async (req, res) => {
   const locInput = req.body["loc"];
   
   try {
-    const result = await axios.get(API_URL + "/current.json?key=" + API_KEY + "&q=" + locInput);
-    console.log(result.data);
-    res.render("today.ejs", result);
+    const forecastResult = await axios.get(API_URL + "/forecast.json?key=" + API_KEY + "&q=" + locInput + "&days=1");
+    console.log(forecastResult.data.forecast.forecastday[0].day);
+    res.render("today.ejs", { data: forecastResult.data});
   } catch (error) {
     console.log(error);
   }

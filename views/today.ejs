@@ -10,69 +10,71 @@
     <nav>
       <div class="id-container">
         <a href=""><p>Today</p></a>
-        <a href=""><p>Hourly</p></a>
+        <a href="hourly.ejs"><p>Hourly</p></a>
         <a href=""><p>3 Day Forecast</p></a>
       </div>
     </nav>
-    <h1>
-      <%= data.location.name %>, <%= data.location.region %>
-    </h1>
-    <div>
-      <div>
-        <h1>
-          <%= data.current.temp_f %>
-        </h1>
-        <div>
-          <h3>
-            <%= data.current.condition.text %>
-          </h3>
-          <h3>
-            feels like <%= data.current.feelslike_f %>
-          </h3>
-          <p>
-            last updated <%= data.current.last_updated %>
-          </p>
-        </div>
-      </div>
+    <main>
+      <h1>
+        <%= data.location.name %>, <%= data.location.region %>
+      </h1>
       <div>
         <div>
-          <h3>High / Low</h3>
-          <h3>
-            <%=  %> / <%= %>
-          </h3>
+          <h1>
+            <%= data.current.temp_f %>
+          </h1>
+          <div>
+            <h3>
+              <%= data.current.condition.text %>
+            </h3>
+            <h3>
+              feels like <%= data.current.feelslike_f %>
+            </h3>
+            <p>
+              last updated <%= data.current.last_updated %>
+            </p>
+          </div>
         </div>
         <div>
-          <h3>Humidity</h3>
-          <h3>
-            <%= data.current.humidity %>
-          </h3>
-        </div>
-        <div>
-          <h3>Wind</h3>
-          <h3>
-            <%= data.current.wind_dir %> <%= data.current.wind_mph %> mph
-          </h3>
-        </div>
-        <div>
-          <h3>Clouds</h3>
-          <h3>
-            <%= data.current.cloud %>%
-          </h3>
-        </div>
-        <div>
-          <h3>Pressure</h3>
-          <h3>
-            <%= data.current.pressure_in %>
-          </h3>
-        </div>
-        <div>
-          <h3>UV Index</h3>
-          <h3>
-            <%= data.current.uv %>
-          </h3>
+          <div>
+            <h3>High / Low</h3>
+            <h3>
+              <%= data.forecast.forecastday[0].day.maxtemp_f %> / <%= data.forecast.forecastday[0].day.mintemp_f %>
+            </h3>
+          </div>
+          <div>
+            <h3>Humidity</h3>
+            <h3>
+              <%= data.current.humidity %>
+            </h3>
+          </div>
+          <div>
+            <h3>Wind</h3>
+            <h3>
+              <%= data.current.wind_dir %> <%= data.current.wind_mph %> mph
+            </h3>
+          </div>
+          <div>
+            <h3>Clouds</h3>
+            <h3>
+              <%= data.current.cloud %>%
+            </h3>
+          </div>
+          <div>
+            <h3>Pressure</h3>
+            <h3>
+              <%= data.current.pressure_in %>
+            </h3>
+          </div>
+          <div>
+            <h3>UV Index</h3>
+            <h3>
+              <%= data.current.uv %>
+            </h3>
+          </div>
         </div>
       </div>
-    </div>
+    </main>
   <% } %>
 
 <%- include("partials/footer.ejs") %>

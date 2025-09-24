@@ -1,0 +1,28 @@
+<%- include("partials/header.ejs") %>
+
+  <% if (locals.data) { %>
+    <header>
+      <form action="/today" method="post">
+        <input type="text" name="loc" id="location">
+        <input type="submit" value="submit">
+      </form>
+    </header>
+    <nav>
+      <div class="id-container">
+        <a href="today.ejs"><p>Today</p></a>
+        <a href=""><p>Hourly</p></a>
+        <a href=""><p>3 Day Forecast</p></a>
+      </div>
+    </nav>
+    <main>
+      <h1>
+        <%= data.location.name %>, <%= data.location.region %>
+      </h1>
+      <div>
+        <h2>Monday</h2>
+        <h2>September 22</h2>
+      </div>
+    </main>
+  <% } %>
+
+<%- include("partials/footer.ejs") %>
