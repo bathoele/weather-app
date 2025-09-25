@@ -25,21 +25,30 @@
         <%= data.location.name %>, <%= data.location.region %>
       </h1>
       <div>
-        <h2>Monday</h2>
-        <h2>September 22</h2>
-      </div>
-      <div>
-        <% for (i = 0; i <= forecastday.length; i++) { %>
-          <% forecastday[0] %>
+
+        <% for (i = 0; i < forecastday.length; i++) { %>
+        
         <div>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
-          <p></p>
+          <div>
+            <h2>Monday</h2>
+            <h2>September 22</h2>
+          </div>
+          <div>
+            <% for (j = 0; j < forecastday[i].hour.length; j++) { %>
+            <div>
+              <p><%= forecastday[i].hour[j].temp_f %></p>
+              <p></p>
+              <p></p>
+              <p></p>
+              <p></p>
+            </div>
+
+            <% } %>
+          </div>
         </div>
 
         <% } %>
+
       </div>
     </main>
   <% } %>
