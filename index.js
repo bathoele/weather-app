@@ -29,15 +29,17 @@ app.post("/today", async (req, res) => {
 
 app.post("/hourly", async (req, res) => {
   const locInput = req.body["loc"] || req.body["submit"];
+  const now = Date.now();
 
   try {
     const forecastResult = await axios.get(API_URL + "/forecast.json?key=" + API_KEY + "&q=" + locInput + "&days=3");
     console.log(forecastResult.data.forecast.forecastday);
 
     res.render("hourly.ejs", { data: forecastResult.data,
-                               forecastday: forecastResult.data.forecast.forecastday
+                               forecastday: forecastResult.data.forecast.forecastday,
+                               nower: now
     });
-  } catch (erro) {
+  } catch (error) {
     console.log(error);
   }
 })

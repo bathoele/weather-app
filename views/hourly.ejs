@@ -35,13 +35,15 @@
           </div>
           <div>
             <% for (j = 0; j < forecastday[i].hour.length; j++) { %>
-            <div>
-              <p><%= forecastday[i].hour[j].temp_f %></p>
-              <p></p>
-              <p></p>
-              <p></p>
-              <p></p>
-            </div>
+              <% if (forecastday[i].hour[j].time_epoch > nower) { %>
+              <div>
+                <p><%= forecastday[i].hour[j].time %></p>
+                <p></p>
+                <p></p>
+                <p></p>
+                <p></p>
+              </div>
+              <% } %>
 
             <% } %>
           </div>
