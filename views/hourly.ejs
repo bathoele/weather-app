@@ -37,10 +37,11 @@
             <% for (j = 0; j < forecastday[i].hour.length; j++) { %>
               <% if (forecastday[i].hour[j].time_epoch > nower) { %>
               <div>
-                <p><%= forecastday[i].hour[j].time %></p>
-                <p></p>
-                <p></p>
-                <p></p>
+                <p><%= forecastday[i].hour[j].time_epoch %></p>
+                <p><%= forecastday[i].hour[j].temp_f %></p>
+                <img src="<%= forecastday[i].hour[j].condition.icon %>" alt="">
+                <p><%= forecastday[i].hour[j].condition.text %></p>
+                <p><%= forecastday[i].hour[j].chance_of_rain %>%</p>
                 <p></p>
               </div>
               <% } %>
