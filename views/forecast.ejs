@@ -1,0 +1,87 @@
+<%- include("partials/header.ejs") %>
+
+  <% if (locals.data) { %>
+    <header>
+      <form action="/today" method="post">
+        <input type="text" name="loc" id="location">
+        <input type="submit" value="submit">
+      </form>
+    </header>
+    <nav>
+      <div class="id-container">
+        <form action="/today" method="post">
+          <button type="submit" value="<%= data.location.name %>" name="submit">Today</button>
+        </form>
+        <form action="/hourly" method="post">
+          <button type="submit" value="<%= data.location.name %>" name="submit">Hourly</button>
+        </form>
+        <form action="/forecast" method="post">
+          <button type="submit" value="<%= data.location.name %>" name="submit">3 Day Forecast</button>
+        </form>
+      </div>
+    </nav>
+    <main>
+      <h1>
+        <%= data.location.name %>, <%= data.location.region %>
+      </h1>
+      <div>
+
+        <% for (i = 0; i < forecastday.length; i++) { %>
+        
+        <div>
+          <div>
+            <h2>Monday</h2>
+            <h2>September 22</h2>
+          </div>
+          <div>
+            <% for (j = 0; j < forecastday[i].hour.length; j++) { %>
+              <% if (forecastday[i].hour[j].time_epoch > nower) { %>
+              <div>
+                <%  
+                  const hourDigit = forecastday[i].hour[j].time.split(" ");
+                  hourDigit.shift();
+                  let newDigit = hourDigit[0].split(":");
+                  newDigit.pop();
+                  newDigit = newDigit[0].replace("0", "");
+                  let period = newDigit >= 12 ? 'pm' : 'am';
+                  newDigit = newDigit > 12 ? newDigit - 12 : newDigit;
+                  newDigit = newDigit == 0 ? 12 : newDigit; 
+                %>
+                <p><%= newDigit %> <%= period %></p>
+                <p><%= Math.floor(forecastday[i].hour[j].temp_f) %>&#176;</p>
+                <img src="<%= forecastday[i].hour[j].condition.icon %>" alt="">
+                <p><%= forecastday[i].hour[j].condition.text %></p>
+                <p><%= forecastday[i].hour[j].chance_of_rain %>%</p>
+                <button>V</button>
+                <div>
+                  <div>
+                    <p>Feels like</p>
+                    <p><%= forecastday[i].hour[j].feelslike_f %></p>
+                  </div>
+                  <div>
+                    <p>Humidity</p>
+                    <p><%= forecastday[i].hour[j].humidity %>%</p>
+                  </div>
+                  <div>
+                    <p>Wind</p>
+                    <p><%= forecastday[i].hour[j].wind_dir %> <%= forecastday[i].hour[j].wind_mph %> mph</p>
+                  </div>
+                  <div>
+                    <p>Cloud Cover</p>
+                    <p><%= forecastday[i].hour[j].cloud %>%</p>
+                  </div>
+                </div>
+              </div>
+              <% } %>
+
+            <% } %>
+          </div>
+        </div>
+
+        <% } %>
+
+      </div>
+    </main>
+  <% } %>
+
+<%- include("partials/footer.ejs") %>
