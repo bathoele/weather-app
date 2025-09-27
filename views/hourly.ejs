@@ -52,23 +52,23 @@
                 <img src="<%= forecastday[i].hour[j].condition.icon %>" alt="">
                 <p><%= forecastday[i].hour[j].condition.text %></p>
                 <p><%= forecastday[i].hour[j].chance_of_rain %>%</p>
-                <!-- Add div for dropdown information -->
+                <button>V</button>
                 <div>
                   <div>
                     <p>Feels like</p>
-                    <p></p>
+                    <p><%= forecastday[i].hour[j].feelslike_f %></p>
                   </div>
                   <div>
                     <p>Humidity</p>
-                    <p></p>
+                    <p><%= forecastday[i].hour[j].humidity %>%</p>
                   </div>
                   <div>
                     <p>Wind</p>
-                    <p></p>
+                    <p><%= forecastday[i].hour[j].wind_dir %> <%= forecastday[i].hour[j].wind_mph %> mph</p>
                   </div>
                   <div>
                     <p>Cloud Cover</p>
-                    <p></p>
+                    <p><%= forecastday[i].hour[j].cloud %>%</p>
                   </div>
                 </div>
               </div>
