@@ -37,12 +37,22 @@
             <% for (j = 0; j < forecastday[i].hour.length; j++) { %>
               <% if (forecastday[i].hour[j].time_epoch > nower) { %>
               <div>
-                <p><%= forecastday[i].hour[j].time_epoch %></p>
-                <p><%= forecastday[i].hour[j].temp_f %></p>
+                <%  
+                  const hourDigit = forecastday[i].hour[j].time.split(" ");
+                  hourDigit.shift();
+                  let newDigit = hourDigit[0].split(":");
+                  newDigit.pop();
+                  newDigit = newDigit[0].replace("0", "");
+                  let period = newDigit >= 12 ? 'pm' : 'am';
+                  newDigit = newDigit > 12 ? newDigit - 12 : newDigit;
+                  newDigit = newDigit == 0 ? 12 : newDigit; 
+                %>
+                <p><%= newDigit %> <%= period %></p>
+                <p><%= Math.floor(forecastday[i].hour[j].temp_f) %>&#176;</p>
                 <img src="<%= forecastday[i].hour[j].condition.icon %>" alt="">
                 <p><%= forecastday[i].hour[j].condition.text %></p>
                 <p><%= forecastday[i].hour[j].chance_of_rain %>%</p>
-                <p></p>
+                <!-- Add div for dropdown information -->
               </div>
               <% } %>
 

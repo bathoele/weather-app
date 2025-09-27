@@ -37,7 +37,7 @@ app.post("/hourly", async (req, res) => {
 
     res.render("hourly.ejs", { data: forecastResult.data,
                                forecastday: forecastResult.data.forecast.forecastday,
-                               nower: now
+                               nower: now,
     });
   } catch (error) {
     console.log(error);
