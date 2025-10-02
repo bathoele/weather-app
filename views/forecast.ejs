@@ -33,7 +33,30 @@
             <h2>Monday</h2>
             <h2>September 22</h2>
           </div>
-          <div></div>
+          <div>
+            <p><%= forecastday[i].day.maxtemp_f %> / <%= forecastday[i].day.mintemp_f %></p>
+            <img src="<%= forecastday[i].day.condition.icon %>" alt="<%= forecastday[i].day.condition.text %> icon">
+            <p><%= forecastday[i].day.condition.text %></p>
+            <p><%= forecastday[i].day.daily_chance_of_rain %>%</p>
+            <button>V</button>
+            <div>
+              <div>
+
+              </div>
+              <div>
+                <p>Humidity</p>
+                <p><%= forecastday[i].day.avghumidity %>%</p>
+              </div>
+              <div>
+                <p>Wind</p>
+                <p><%= forecastday[i].day.maxwind_mph %> mph</p>
+              </div>
+              <div>
+                <p>UV Index</p>
+                <p><%= forecastday[i].day.uv %></p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <% } %>

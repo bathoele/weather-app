@@ -50,7 +50,7 @@
                 %>
                 <p><%= newDigit %> <%= period %></p>
                 <p><%= Math.floor(forecastday[i].hour[j].temp_f) %>&#176;</p>
-                <img src="<%= forecastday[i].hour[j].condition.icon %>" alt="">
+                <img src="<%= forecastday[i].hour[j].condition.icon %>" alt="<%= forecastday[i].hour[j].condition.text %> icon">
                 <p><%= forecastday[i].hour[j].condition.text %></p>
                 <p><%= forecastday[i].hour[j].chance_of_rain %>%</p>
                 <button>V</button>
