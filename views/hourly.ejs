@@ -42,7 +42,8 @@
                   hourDigit.shift();
                   let newDigit = hourDigit[0].split(":");
                   newDigit.pop();
-                  newDigit = newDigit[0].replace("0", "");
+                  const regex = /[0](?=[1-9])/;
+                  newDigit = newDigit[0].replace(regex, "");
                   let period = newDigit >= 12 ? 'pm' : 'am';
                   newDigit = newDigit > 12 ? newDigit - 12 : newDigit;
                   newDigit = newDigit == 0 ? 12 : newDigit; 

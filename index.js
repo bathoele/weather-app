@@ -42,7 +42,22 @@ app.post("/hourly", async (req, res) => {
   } catch (error) {
     console.log(error);
   }
-})
+});
+
+app.post("/forecast", async (req, res) => {
+  const locInput = req.body["loc"] || req.body["submit"];
+
+  try {
+    const forecastResult = await axios.get(API_URL + "/forecast.json?key=" + API_KEY + "&q=" + locInput + "&days=3");
+    console.log(forecastResult.data.forecast.forecastday[0].hour[0]);
+
+    res.render("forecast.ejs", { data: forecastResult.data,
+                                 forecastday: forecastResult.data.forecast.forecastday,
+    });
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
