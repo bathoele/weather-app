@@ -20,8 +20,13 @@
         
         <div>
           <div>
-            <h2>Monday</h2>
-            <h2>September 22</h2>
+            <%
+              let newDate = new Date(forecastday[i].date_epoch * 1000.05);
+              const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+              const monthsOfYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            %>
+            <h2><%= daysOfWeek[newDate.getDay()] %></h2>
+            <h2><%= monthsOfYear[newDate.getMonth()] %> <%= newDate.getDate() %></h2>
           </div>
           <div>
             <% for (j = 0; j < forecastday[i].hour.length; j++) { %>

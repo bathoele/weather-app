@@ -27,7 +27,8 @@
               feels like <%= Math.round(data.current.feelslike_f) %>
             </h3>
             <p>
-              last updated <%= data.current.last_updated %>
+              <% let lastUp = new Date(data.current.last_updated) %>
+              last updated <%= lastUp.getMonth() + 1 %>-<%= lastUp.getDate() %>-<%= lastUp.getFullYear() %>
             </p>
           </div>
         </div>
