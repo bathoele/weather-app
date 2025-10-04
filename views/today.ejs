@@ -17,14 +17,14 @@
       <div>
         <div>
           <h1>
-            <%= data.current.temp_f %>
+            <%= Math.round(data.current.temp_f) %>
           </h1>
           <div>
             <h3>
               <%= data.current.condition.text %>
             </h3>
             <h3>
-              feels like <%= data.current.feelslike_f %>
+              feels like <%= Math.round(data.current.feelslike_f) %>
             </h3>
             <p>
               last updated <%= data.current.last_updated %>
@@ -35,7 +35,7 @@
           <div>
             <h3>High / Low</h3>
             <h3>
-              <%= data.forecast.forecastday[0].day.maxtemp_f %> / <%= data.forecast.forecastday[0].day.mintemp_f %>
+              <%= Math.round(data.forecast.forecastday[0].day.maxtemp_f) %> / <%= Math.round(data.forecast.forecastday[0].day.mintemp_f) %>
             </h3>
           </div>
           <div>
@@ -47,7 +47,7 @@
           <div>
             <h3>Wind</h3>
             <h3>
-              <%= data.current.wind_dir %> <%= data.current.wind_mph %> mph
+              <%= data.current.wind_dir %> <%= Math.round(data.current.wind_mph) %> mph
             </h3>
           </div>
           <div>
@@ -59,7 +59,7 @@
           <div>
             <h3>Pressure</h3>
             <h3>
-              <%= data.current.pressure_in %>
+              <%= Math.round(data.current.pressure_in) %>
             </h3>
           </div>
           <div>

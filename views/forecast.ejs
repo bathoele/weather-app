@@ -24,7 +24,7 @@
             <h2>September 22</h2>
           </div>
           <div>
-            <p><%= forecastday[i].day.maxtemp_f %> / <%= forecastday[i].day.mintemp_f %></p>
+            <p><%= Math.round(forecastday[i].day.maxtemp_f) %> / <%= Math.round(forecastday[i].day.mintemp_f) %></p>
             <img src="<%= forecastday[i].day.condition.icon %>" alt="<%= forecastday[i].day.condition.text %> icon">
             <p><%= forecastday[i].day.condition.text %></p>
             <p><%= forecastday[i].day.daily_chance_of_rain %>%</p>
@@ -39,7 +39,7 @@
               </div>
               <div>
                 <p>Wind</p>
-                <p><%= forecastday[i].day.maxwind_mph %> mph</p>
+                <p><%= Math.round(forecastday[i].day.maxwind_mph) %> mph</p>
               </div>
               <div>
                 <p>UV Index</p>

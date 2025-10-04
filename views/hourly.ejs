@@ -39,7 +39,7 @@
                   newDigit = newDigit == 0 ? 12 : newDigit; 
                 %>
                 <p><%= newDigit %> <%= period %></p>
-                <p><%= Math.floor(forecastday[i].hour[j].temp_f) %>&#176;</p>
+                <p><%= Math.round(forecastday[i].hour[j].temp_f) %>&#176;</p>
                 <img src="<%= forecastday[i].hour[j].condition.icon %>" alt="<%= forecastday[i].hour[j].condition.text %> icon">
                 <p><%= forecastday[i].hour[j].condition.text %></p>
                 <p><%= forecastday[i].hour[j].chance_of_rain %>%</p>
@@ -47,7 +47,7 @@
                 <div>
                   <div>
                     <p>Feels like</p>
-                    <p><%= forecastday[i].hour[j].feelslike_f %></p>
+                    <p><%= Math.round(forecastday[i].hour[j].feelslike_f) %></p>
                   </div>
                   <div>
                     <p>Humidity</p>
@@ -55,7 +55,7 @@
                   </div>
                   <div>
                     <p>Wind</p>
-                    <p><%= forecastday[i].hour[j].wind_dir %> <%= forecastday[i].hour[j].wind_mph %> mph</p>
+                    <p><%= forecastday[i].hour[j].wind_dir %> <%= Math.round(forecastday[i].hour[j].wind_mph) %> mph</p>
                   </div>
                   <div>
                     <p>Cloud Cover</p>
