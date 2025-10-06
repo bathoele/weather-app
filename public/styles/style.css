@@ -15,6 +15,10 @@ html {
   font-family: "Nunito", sans-serif;
 }
 
+body {
+  margin: 0;
+}
+
 .search-div {
   text-align: center;
   padding-top: 1em;
@@ -36,6 +40,74 @@ html {
 
 #loc-submit {
   display: none;
+}
+
+/* Nav Buttons */
+
+.id-container {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  justify-content: center;
+  margin-top: 1em;
+  background-color: darkgrey;
+  padding: .7em;
+}
+
+.id-container > form > button {
+  padding: .7em;
+}
+
+
+/* Main */
+
+main {
+  padding: 1em;
+  padding-top: 1.5em;
+}
+
+.loc-header > h1 {
+  line-height: 1em;
+  margin: 0;
+}
+
+.top-info {
+  display: flex;
+  flex-direction: row;
+  gap: 1.2em;
+}
+
+.top-info > h1 {
+  font-size: 5em;
+  padding: 0;
+  margin: 0;
+}
+
+.inner-top {
+  padding-top: 1.2em;
+}
+
+.inner-top > h3, .inner-top > p {
+  margin: 0;
+}
+
+.inner-top > h3 {
+  line-height: 1.1em;
+}
+
+.inner-top > p {
+  font-size: .7em;
+  margin-top: 1em;
+}
+
+.bottom-info {
+  max-width: 15em;
+}
+
+.info-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 @media (min-width: 768px) {}

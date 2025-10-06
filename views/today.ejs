@@ -13,64 +13,64 @@
     <%- include("partials/nav.ejs") %>
     
     <main>
-      <h1>
-        <%= data.location.name %>, <%= data.location.region %>
-      </h1>
-      <div>
-        <div>
-          <h1>
-            <%= Math.round(data.current.temp_f) %>
-          </h1>
-          <div>
-            <h3>
-              <%= data.current.condition.text %>
-            </h3>
-            <h3>
-              feels like <%= Math.round(data.current.feelslike_f) %>
-            </h3>
-            <p>
-              <% let lastUp = new Date(data.current.last_updated) %>
+      <div class="loc-header">
+        <h1>
+          <%= data.location.name %>, <%= data.location.region %>
+        </h1>
+      </div>
+      <div class="top-info">
+        <h1>
+          <%= Math.round(data.current.temp_f) %>
+        </h1>
+        <div class="inner-top">
+          <h3>
+            <%= data.current.condition.text %>
+          </h3>
+          <h3>
+            feels like <%= Math.round(data.current.feelslike_f) %>
+          </h3>
+          <p>
+            <% let lastUp = new Date(data.current.last_updated) %>
               last updated <%= lastUp.getMonth() + 1 %>-<%= lastUp.getDate() %>-<%= lastUp.getFullYear() %>
-            </p>
-          </div>
+          </p>
         </div>
-        <div>
-          <div>
-            <h3>High / Low</h3>
-            <h3>
-              <%= Math.round(data.forecast.forecastday[0].day.maxtemp_f) %> / <%= Math.round(data.forecast.forecastday[0].day.mintemp_f) %>
-            </h3>
-          </div>
-          <div>
-            <h3>Humidity</h3>
-            <h3>
-              <%= data.current.humidity %>
-            </h3>
-          </div>
-          <div>
-            <h3>Wind</h3>
-            <h3>
-              <%= data.current.wind_dir %> <%= Math.round(data.current.wind_mph) %> mph
-            </h3>
-          </div>
-          <div>
-            <h3>Clouds</h3>
-            <h3>
-              <%= data.current.cloud %>%
-            </h3>
-          </div>
-          <div>
-            <h3>Pressure</h3>
-            <h3>
-              <%= Math.round(data.current.pressure_in) %>
-            </h3>
-          </div>
-          <div>
-            <h3>UV Index</h3>
-            <h3>
-              <%= data.current.uv %>
-            </h3>
-          </div>
+      </div>
+      <div class="bottom-info">
+        <div class="info-line">
+          <p>High / Low</p>
+          <p>
+            <%= Math.round(data.forecast.forecastday[0].day.maxtemp_f) %> / <%= Math.round(data.forecast.forecastday[0].day.mintemp_f) %>
+          </p>
+        </div>
+        <div class="info-line">
+          <p>Humidity</p>
+          <p>
+            <%= data.current.humidity %>%
+          </p>
+        </div>
+        <div class="info-line">
+          <p>Wind</p>
+          <p>
+            <%= data.current.wind_dir %> <%= Math.round(data.current.wind_mph) %> mph
+          </p>
+        </div>
+        <div class="info-line">
+          <p>Clouds</p>
+          <p>
+            <%= data.current.cloud %>%
+          </p>
+        </div>
+        <div class="info-line">
+          <p>Pressure</p>
+          <p>
+            <%= Math.round(data.current.pressure_in) %>
+          </p>
+        </div>
+        <div class="info-line">
+          <p>UV Index</p>
+          <p>
+            <%= data.current.uv %>
+          </p>
         </div>
       </div>
     </main>
