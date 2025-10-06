@@ -15,7 +15,7 @@ html {
   font-family: "Nunito", sans-serif;
 }
 
-.index-div {
+.search-div {
   text-align: center;
   padding-top: 1em;
 }
@@ -24,7 +24,7 @@ html {
   font-size: 1.2em;
   width: 90%;
   height: 3.5em;
-  padding: .8em;
+  padding: 1em;
   border: none;
   border-radius: .3em;
   background-color: lightgray;
