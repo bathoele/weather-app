@@ -1,7 +1,7 @@
 
 :root {
   box-sizing: border-box;
-  font-size: calc(1vw + 0.7em);
+  font-size: calc(1vw + 0.8em);
 }
 
 *,
@@ -12,9 +12,31 @@
 
 html {
   scroll-behavior: smooth;
+  font-family: "Nunito", sans-serif;
 }
 
+.index-div {
+  text-align: center;
+  padding-top: 1em;
+}
 
+#location {
+  font-size: 1.2em;
+  width: 90%;
+  height: 3.5em;
+  padding: .8em;
+  border: none;
+  border-radius: .3em;
+  background-color: lightgray;
+}
+
+#location:focus {
+  outline: none;
+}
+
+#loc-submit {
+  display: none;
+}
 
 @media (min-width: 768px) {}
 @media (min-width: 1280px) {}
