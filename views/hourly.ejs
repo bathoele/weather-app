@@ -11,9 +11,11 @@
     <%- include("partials/nav.ejs") %>
     
     <main>
-      <h1>
-        <%= data.location.name %>, <%= data.location.region %>
-      </h1>
+      <div class="loc-header">
+        <h1>
+          <%= data.location.name %>, <%= data.location.region %>
+        </h1>
+      </div>
       <div>
 
         <% for (i = 0; i < forecastday.length; i++) { %>
@@ -25,8 +27,8 @@
               const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
               const monthsOfYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
             %>
-            <h2><%= daysOfWeek[newDate.getDay()] %></h2>
-            <h2><%= monthsOfYear[newDate.getMonth()] %> <%= newDate.getDate() %></h2>
+            <h2 class="hourly-day"><%= daysOfWeek[newDate.getDay()] %>,</h2>
+            <h2 class="hourly-date"><%= monthsOfYear[newDate.getMonth()] %> <%= newDate.getDate() %></h2>
           </div>
           <div>
             <% for (j = 0; j < forecastday[i].hour.length; j++) { %>
