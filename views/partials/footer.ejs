@@ -2,7 +2,23 @@
   <p>Copyright © <%= new Date().getFullYear() %>
   </p>
 </footer>
-<script src="/public/JS/yes.js" type="application/json"></script>
+<script>
+
+  $('.down-btn').on("click", (e) => {
+
+    const id = e.target.value;
+
+    if ($(e.target).hasClass('active')) {
+      $(e.target).removeClass('active');
+      $('#' + id).removeClass('visible');
+
+    } else {
+      $(e.target).addClass('active');
+      $('#' + id).addClass('visible');
+    }
+
+  })
+</script>
 </body>
 
 </html> 

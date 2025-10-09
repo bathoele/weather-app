@@ -35,39 +35,41 @@
           <div class="hours-box">
             <% for (j = 0; j < forecastday[i].hour.length; j++) { %>
               <% if (forecastday[i].hour[j].time_epoch > nower) { %>
-              <div class="hour-line">
-                <%  
-                  const hourDigit = forecastday[i].hour[j].time.split(" ");
-                  hourDigit.shift();
-                  let newDigit = hourDigit[0].split(":");
-                  newDigit.pop();
-                  const regex = /[0](?=[1-9])/;
-                  newDigit = newDigit[0].replace(regex, "");
-                  let period = newDigit >= 12 ? 'pm' : 'am';
-                  newDigit = newDigit > 12 ? newDigit - 12 : newDigit;
-                  newDigit = newDigit == 0 ? 12 : newDigit; 
-                %>
-                <p><%= newDigit %><%= period %></p>
-                <p><%= Math.round(forecastday[i].hour[j].temp_f) %>&#176;</p>
-                <img src="<%= forecastday[i].hour[j].condition.icon %>" alt="<%= forecastday[i].hour[j].condition.text %> icon" class="hour-icon">
-                <p class="hour-cond"><%= forecastday[i].hour[j].condition.text %></p>
-                <p><%= forecastday[i].hour[j].chance_of_rain %>%</p>
-                <button class="down-btn" value="<%= newDate %>">V</button>
-                <div class="invisibox <%= newDate %>">
+              <div class="line-box-container">
+                <div class="hour-line">
+                  <%  
+                    const hourDigit = forecastday[i].hour[j].time.split(" ");
+                    hourDigit.shift();
+                    let newDigit = hourDigit[0].split(":");
+                    newDigit.pop();
+                    const regex = /[0](?=[1-9])/;
+                    newDigit = newDigit[0].replace(regex, "");
+                    let period = newDigit >= 12 ? 'pm' : 'am';
+                    newDigit = newDigit > 12 ? newDigit - 12 : newDigit;
+                    newDigit = newDigit == 0 ? 12 : newDigit; 
+                  %>
+                  <p><%= newDigit %><%= period %></p>
+                  <p><%= Math.round(forecastday[i].hour[j].temp_f) %>&#176;</p>
+                  <img src="<%= forecastday[i].hour[j].condition.icon %>" alt="<%= forecastday[i].hour[j].condition.text %> icon" class="hour-icon">
+                  <p class="hour-cond"><%= forecastday[i].hour[j].condition.text %></p>
+                  <p><%= forecastday[i].hour[j].chance_of_rain %>%</p>
+                  <button class="down-btn" value="<%= forecastday[i].hour[j].time_epoch %>">V</button>
+                </div>
+                <div class="invisibox" id="<%= forecastday[i].hour[j].time_epoch %>">
                   <div>
-                    <p>Feels like</p>
+                    <p><i>Feels like</i></p>
                     <p><%= Math.round(forecastday[i].hour[j].feelslike_f) %></p>
                   </div>
                   <div>
-                    <p>Humidity</p>
+                    <p><i>Humidity</i></p>
                     <p><%= forecastday[i].hour[j].humidity %>%</p>
                   </div>
                   <div>
-                    <p>Wind</p>
+                    <p><i>Wind</i></p>
                     <p><%= forecastday[i].hour[j].wind_dir %> <%= Math.round(forecastday[i].hour[j].wind_mph) %> mph</p>
                   </div>
                   <div>
-                    <p>Cloud Cover</p>
+                    <p><i>Cloud Cover</i></p>
                     <p><%= forecastday[i].hour[j].cloud %>%</p>
                   </div>
                 </div>

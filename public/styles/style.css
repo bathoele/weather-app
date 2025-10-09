@@ -143,6 +143,11 @@ main {
   gap: .3em;
 }
 
+.line-box-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .hour-line {
   font-size: .9em;
   background-color: lightgray;
@@ -169,16 +174,32 @@ main {
 }
 
 .hourly-day-container {
-
+  padding: 0 0 .8em .8em;
 }
 
 .hourly-day, .hourly-date {
   font-size: 1.2em;
-  margin: 0 .6em 0 .6em;
+  margin: 0;
+  line-height: 1.2em;
+}
+
+.down-btn.active {
+  background-color: green;
 }
 
 .invisibox {
   display: none;
+  grid-template-columns: 1fr 1fr;
+  padding: 1em;
+  gap: 1em;
+}
+
+.invisibox.visible {
+  display: grid;
+}
+
+.invisibox > div > p {
+  margin: 0;
 }
 
 
