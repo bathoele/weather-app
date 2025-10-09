@@ -125,17 +125,56 @@ main {
 
 /* Hourly Page */
 
+.hour-main {
+  padding: 0;
+}
+
+.hourly-header {
+  padding: 1.5em 1em 0em 1em;
+}
+
 .days-box {
   margin-top: 1.5em;
 }
 
-.hour-line {
-  border: solid;
+.hours-box {
   display: flex;
+  flex-direction: column;
+  gap: .3em;
+}
+
+.hour-line {
+  font-size: .9em;
+  background-color: lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 3.2em;
+  padding: .8em 1em .8em 1em;
+}
+
+.hour-line > p {
+  margin: 0;
+  width: 3em;
+}
+
+.hour-cond {
+  font-size: .8em;
+  line-height: 1.1em;
+  display: none;
+}
+
+.hour-icon {
+  width: 3em;
+}
+
+.hourly-day-container {
+
 }
 
 .hourly-day, .hourly-date {
-  margin: 0;
+  font-size: 1.2em;
+  margin: 0 .6em 0 .6em;
 }
 
 .invisibox {
