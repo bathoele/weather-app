@@ -125,5 +125,24 @@ main {
 
 /* Hourly Page */
 
+.days-box {
+  margin-top: 1.5em;
+}
+
+.hour-line {
+  border: solid;
+  display: flex;
+}
+
+.hourly-day, .hourly-date {
+  margin: 0;
+}
+
+.invisibox {
+  display: none;
+}
+
+
+
 @media (min-width: 768px) {}
 @media (min-width: 1280px) {}

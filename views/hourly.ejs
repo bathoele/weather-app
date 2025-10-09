@@ -16,11 +16,11 @@
           <%= data.location.name %>, <%= data.location.region %>
         </h1>
       </div>
-      <div>
+      <div class="full-box">
 
         <% for (i = 0; i < forecastday.length; i++) { %>
         
-        <div>
+        <div class="days-box">
           <div>
             <%
               let newDate = new Date(forecastday[i].date_epoch * 1000.05);
@@ -30,10 +30,10 @@
             <h2 class="hourly-day"><%= daysOfWeek[newDate.getDay()] %>,</h2>
             <h2 class="hourly-date"><%= monthsOfYear[newDate.getMonth()] %> <%= newDate.getDate() %></h2>
           </div>
-          <div>
+          <div class="hours-box">
             <% for (j = 0; j < forecastday[i].hour.length; j++) { %>
               <% if (forecastday[i].hour[j].time_epoch > nower) { %>
-              <div>
+              <div class="hour-line">
                 <%  
                   const hourDigit = forecastday[i].hour[j].time.split(" ");
                   hourDigit.shift();
@@ -51,7 +51,7 @@
                 <p><%= forecastday[i].hour[j].condition.text %></p>
                 <p><%= forecastday[i].hour[j].chance_of_rain %>%</p>
                 <button>V</button>
-                <div>
+                <div class="invisibox">
                   <div>
                     <p>Feels like</p>
                     <p><%= Math.round(forecastday[i].hour[j].feelslike_f) %></p>
