@@ -183,8 +183,26 @@ main {
   line-height: 1.2em;
 }
 
+.down-btn {
+  height: 2em;
+  width: 2em;
+}
+
 .down-btn.active {
   background-color: green;
+}
+
+.drop-arrow {
+  position: relative;
+  right: 1.1em;
+  top: -.7em;
+  transform: rotate(180deg);
+  height: 3em;
+  width: 3em;
+}
+
+.drop-arrow.active {
+  transform: rotate(90deg);
 }
 
 .invisibox {
