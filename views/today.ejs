@@ -12,7 +12,7 @@
 
     <%- include("partials/nav.ejs") %>
     
-    <main>
+    <main class="today-main">
       <div class="loc-header">
         <h1>
           <%= data.location.name %>, <%= data.location.region %>
@@ -31,15 +31,15 @@
           </h3>
           <p>
             <% let lastUp = new Date(data.current.last_updated) %>
-              last updated <%= lastUp.getMonth() + 1 %>-<%= lastUp.getDate() %>-<%= lastUp.getFullYear() %>
+              <i>last updated <%= lastUp.getMonth() + 1 %>-<%= lastUp.getDate() %>-<%= lastUp.getFullYear() %></i>
           </p>
         </div>
       </div>
       <div class="bottom-info">
         <div class="info-line">
-          <p>High / Low</p>
+          <p>High &#x2022; Low</p>
           <p>
-            <%= Math.round(data.forecast.forecastday[0].day.maxtemp_f) %> / <%= Math.round(data.forecast.forecastday[0].day.mintemp_f) %>
+            <%= Math.round(data.forecast.forecastday[0].day.maxtemp_f) %> &#x2022; <%= Math.round(data.forecast.forecastday[0].day.mintemp_f) %>
           </p>
         </div>
         <div class="info-line">

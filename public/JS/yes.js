@@ -1,5 +1,4 @@
 
-
 $('.down-btn').on("click", (e) => {
   const id = e.target.value;
   if ($(e.target).hasClass('active')) {
