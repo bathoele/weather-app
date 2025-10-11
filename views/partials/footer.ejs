@@ -11,12 +11,9 @@
     if ($(e.target).hasClass('active')) {
       $(e.target).removeClass('active');
       $('#' + id).removeClass('visible');
-      $('#' + id + '-arrow').removeClass('active');
-
     } else {
       $(e.target).addClass('active');
       $('#' + id).addClass('visible');
-      $('#' + id + '-arrow').addClass('active');
     }
 
   })

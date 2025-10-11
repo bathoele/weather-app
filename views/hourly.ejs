@@ -53,8 +53,7 @@
                   <img src="<%= forecastday[i].hour[j].condition.icon %>" alt="<%= forecastday[i].hour[j].condition.text %> icon" class="hour-icon">
                   <p class="hour-cond"><%= forecastday[i].hour[j].condition.text %></p>
                   <p><%= forecastday[i].hour[j].chance_of_rain %>%</p>
-                  
-                  <button class="down-btn" value="<%= forecastday[i].hour[j].time_epoch %>"><img class="drop-arrow" id="<%= forecastday[i].hour[j].time_epoch %>-arrow" src="ASSETS/icons8-forward-96.png"></button>
+                  <button class="down-btn" value="<%= forecastday[i].hour[j].time_epoch %>"></button>
                 </div>
                 <div class="invisibox" id="<%= forecastday[i].hour[j].time_epoch %>">
                   <div>

@@ -186,22 +186,16 @@ main {
 .down-btn {
   height: 2em;
   width: 2em;
+  background-image: url(../ASSETS/icons8-forward-96.png);
+  background-size: 3em;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: rotate(180deg);
+  border: none;
+  background-color: transparent;
 }
 
 .down-btn.active {
-  background-color: green;
-}
-
-.drop-arrow {
-  position: relative;
-  right: 1.1em;
-  top: -.7em;
-  transform: rotate(180deg);
-  height: 3em;
-  width: 3em;
-}
-
-.drop-arrow.active {
   transform: rotate(90deg);
 }
 
