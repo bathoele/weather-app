@@ -54,13 +54,13 @@ body {
   padding: .7em;
 }
 
-.id-container > form > button {
+.nav-btn {
   padding: .7em;
   border: none;
   font-family: 'Nunito', sans-serif;
 }
 
-.id-container > form > button.active {
+.nav-btn.active {
   background-color: darkslategray;
 }
 

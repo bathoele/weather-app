@@ -22,7 +22,9 @@ app.post("/today", async (req, res) => {
   
   try {
     const forecastResult = await axios.get(API_URL + "/forecast.json?key=" + API_KEY + "&q=" + locInput + "&days=1");
-    res.render("today.ejs", { data: forecastResult.data});
+    res.render("today.ejs", { data: forecastResult.data,
+                              curPage: 'today',
+    });
   } catch (error) {
     console.log(error);
   }
@@ -38,6 +40,7 @@ app.post("/hourly", async (req, res) => {
     res.render("hourly.ejs", { data: forecastResult.data,
                                forecastday: forecastResult.data.forecast.forecastday,
                                nower: now,
+                               curPage: 'hourly',
     });
   } catch (error) {
     console.log(error);
@@ -52,6 +55,7 @@ app.post("/forecast", async (req, res) => {
 
     res.render("forecast.ejs", { data: forecastResult.data,
                                  forecastday: forecastResult.data.forecast.forecastday,
+                                 curPage: 'forecast',
     });
   } catch (error) {
     console.log(error);

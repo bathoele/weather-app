@@ -1,16 +1,12 @@
-console.log("yues");
+
 
 $('.down-btn').on("click", (e) => {
-
-  console.log("down button pushed");
-  
-
+  const id = e.target.value;
   if ($(e.target).hasClass('active')) {
-    // remove class 'active' from button and invisibox
-    console.log("remove active");
+    $(e.target).removeClass('active');
+    $('#' + id).removeClass('visible');
   } else {
-    // add class 'active' to button and invisibox
-    console.log("add active");
+    $(e.target).addClass('active');
+    $('#' + id).addClass('visible');
   }
-
 })
