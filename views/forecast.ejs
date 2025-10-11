@@ -12,8 +12,8 @@
 
     <%- include("partials/nav.ejs") %>
     
-    <main>
-      <div class="loc-header">
+    <main class="hour-main">
+      <div class="loc-header hourly-header">
         <h1>
           <%= data.location.name %>, <%= data.location.region %>
         </h1>
@@ -22,38 +22,35 @@
 
         <% for (i = 0; i < forecastday.length; i++) { %>
         
-        <div class="days-box">
-          <div class="hourly-day-container">
+        <div class="forecast-box">
+          <div class="forecast-day">
             <%
               let newDate = new Date(forecastday[i].date_epoch * 1000.05);
               const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
               const monthsOfYear = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
             %>
-            <h2><%= daysOfWeek[newDate.getDay()] %></h2>
-            <h2><%= monthsOfYear[newDate.getMonth()] %> <%= newDate.getDate() %></h2>
+            <h3><%= daysOfWeek[newDate.getDay()] %>,</h3>
+            <h3><%= monthsOfYear[newDate.getMonth()] %> <%= newDate.getDate() %></h3>
           </div>
-          <div>
-            <p><%= Math.round(forecastday[i].day.maxtemp_f) %> / <%= Math.round(forecastday[i].day.mintemp_f) %></p>
-            <img src="<%= forecastday[i].day.condition.icon %>" alt="<%= forecastday[i].day.condition.text %> icon">
+          <div class="fore-info">
+            <p><%= Math.round(forecastday[i].day.maxtemp_f) %> &#x2022; <%= Math.round(forecastday[i].day.mintemp_f) %></p>
+            <img src="<%= forecastday[i].day.condition.icon %>" alt="<%= forecastday[i].day.condition.text %> icon" class="hour-icon">
             <p><%= forecastday[i].day.condition.text %></p>
             <p><%= forecastday[i].day.daily_chance_of_rain %>%</p>
-            <button>V</button>
+            <button class="forey down-btn" value="<%= forecastday[i].date_epoch %>"></button>
+          </div>
+          <div class="invisibox" id="<%= forecastday[i].date_epoch %>">
             <div>
-              <div>
-
-              </div>
-              <div>
-                <p>Humidity</p>
-                <p><%= forecastday[i].day.avghumidity %>%</p>
-              </div>
-              <div>
-                <p>Wind</p>
-                <p><%= Math.round(forecastday[i].day.maxwind_mph) %> mph</p>
-              </div>
-              <div>
-                <p>UV Index</p>
-                <p><%= forecastday[i].day.uv %></p>
-              </div>
+              <p><i>Humidity</i></p>
+              <p><%= forecastday[i].day.avghumidity %>%</p>
+            </div>
+            <div>
+              <p><i>Wind</i></p>
+              <p><%= Math.round(forecastday[i].day.maxwind_mph) %> mph</p>
+            </div>
+            <div>
+              <p><i>UV Index</i></p>
+              <p><%= forecastday[i].day.uv %></p>
             </div>
           </div>
         </div>

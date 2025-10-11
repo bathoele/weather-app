@@ -56,6 +56,12 @@ body {
 
 .id-container > form > button {
   padding: .7em;
+  border: none;
+  font-family: 'Nunito', sans-serif;
+}
+
+.id-container > form > button.active {
+  background-color: darkslategray;
 }
 
 
@@ -214,6 +220,29 @@ main {
   margin: 0;
 }
 
+/* 3 Day Forecast */
+
+.forecast-box {
+  margin-top: 1em;
+  background-color: lightgray;
+  padding: .8em 1em .8em 1em;
+}
+
+.forecast-day > h3 {
+  margin: 0;
+  line-height: 1.2em;
+}
+
+.fore-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fore-info > p {
+  margin: 0;
+}
 
 
 @media (min-width: 768px) {}
