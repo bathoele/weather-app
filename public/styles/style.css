@@ -17,6 +17,8 @@ html {
 
 body {
   margin: 0;
+  background-color: #333;
+  color: whitesmoke;
 }
 
 .search-div {
@@ -32,7 +34,7 @@ body {
   padding: 1em;
   border: none;
   border-radius: .3em;
-  background-color: lightgray;
+  background-color: #4f4f4f;
 }
 
 #location:focus {
@@ -50,7 +52,6 @@ body {
   flex-direction: row;
   gap: 1em;
   justify-content: center;
-  background-color: darkgrey;
   padding: .7em;
 }
 
@@ -59,12 +60,8 @@ body {
   border: none;
   border-radius: .3em;
   font-family: 'Nunito', sans-serif;
+  background-color: #bbb;
 }
-
-.nav-btn.active {
-  background-color: darkslategray;
-}
-
 
 /* Main */
 
@@ -121,7 +118,7 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: #d3d3d3;
+  background-color: #444;
   padding-left: 1em;
   padding-right: 1em; 
   border-radius: 1em;

@@ -35,7 +35,6 @@
           <div class="fore-info">
             <p><%= Math.round(forecastday[i].day.maxtemp_f) %> &#x2022; <%= Math.round(forecastday[i].day.mintemp_f) %></p>
             <img src="<%= forecastday[i].day.condition.icon %>" alt="<%= forecastday[i].day.condition.text %> icon" class="hour-icon">
-            <p><%= forecastday[i].day.condition.text %></p>
             <p><%= forecastday[i].day.daily_chance_of_rain %>%</p>
             <button class="forey down-btn" value="<%= forecastday[i].date_epoch %>"></button>
           </div>
