@@ -1,7 +1,7 @@
 
 
 function App() {
-  return
+  return <div>Google</div>
 }
 
 export default App
