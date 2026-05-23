@@ -1,7 +1,10 @@
-
+import React from "react"
+import searchBar  from "./components/searchBar"
 
 function App() {
-  return <div>Google</div>
+  return(
+    <searchBar></searchBar>
+  )
 }
 
 export default App
