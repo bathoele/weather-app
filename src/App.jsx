@@ -1,9 +1,14 @@
-import React from "react"
-import searchBar  from "./components/searchBar"
+import React, { useState } from "react"
+import SearchBar  from "./components/SearchBar"
 
 function App() {
+  const [results, setResults] = useState([])
+
   return(
-    <searchBar></searchBar>
+    <div>
+      <SearchBar onResults={setResults} />
+      <pre>{JSON.stringify(results, null, 2)}</pre>
+    </div>
   )
 }
 
