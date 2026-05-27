@@ -8,8 +8,9 @@ function SearchBar() {
     if (!query) return
 
     const res = await fetch(`http://localhost:3000/search?q=${encodeURIComponent(query)}`)
-    const data = await res.json()
-    onResults(data)
+    //console.log(res);
+    // const data = await res.json()
+    // onResults(data)
   }
 
   return (

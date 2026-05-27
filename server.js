@@ -5,9 +5,10 @@ import axios from 'axios';
 const app = express();
 
 app.get('/search', async (req, res) => {
+  const param = req.query.q;
   try {
-    const response = await axios.get('https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m,relative_humidity_2m');
-    res.json(response);
+    const response = await axios.get(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(param)}&count=3`);
+    console.log(response.data.results);
   } catch (error) {
     console.error(error);
   }
