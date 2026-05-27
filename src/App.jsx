@@ -7,7 +7,6 @@ function App() {
   return(
     <div>
       <SearchBar onResults={setResults} />
-      <pre>{JSON.stringify(results, null, 2)}</pre>
     </div>
   )
 }
