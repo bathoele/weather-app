@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 
 function SearchBar() {
   const [query, setQuery] = useState('');
@@ -19,8 +19,12 @@ function SearchBar() {
     clearTimeout(deboRef.current);
     deboRef.current = setTimeout(async () => {
       const res = await fetch(`http://localhost:3000/search?q=${encodeURIComponent(query)}`);
-    })
-  })
+      // response may already be json formatted from axios
+      const data = await res;
+      const results = data || [];
+      console.log(results);
+    }, 300);
+  }, [query]);
 
   const handleInput = async (event) => {
     event.preventDefault();
