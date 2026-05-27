@@ -20,9 +20,9 @@ function SearchBar() {
     deboRef.current = setTimeout(async () => {
       const res = await fetch(`http://localhost:3000/search?q=${encodeURIComponent(query)}`);
       // response may already be json formatted from axios
-      const data = await res;
-      const results = data || [];
-      console.log(results);
+      const data = await res.json() || [];
+      const results = data.results;
+      console.log(results[0].name);
     }, 300);
   }, [query]);
 
