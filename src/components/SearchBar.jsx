@@ -3,7 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 function SearchBar() {
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
-  // open state controls suggestion list display
+  // the open hook controls suggestion list display
   const [open, setOpen] = useState(false);
   const deboRef = useRef(null);
 
@@ -21,27 +21,28 @@ function SearchBar() {
       const res = await fetch(`http://localhost:3000/search?q=${encodeURIComponent(query)}`);
       const data = await res.json();
       const results = data.results || [];
-      console.log(results[0].name);
+      console.log(results);
 
-      // use map callback to set all 3 names as suggestions
-      setSuggestions(results[0].name);
+      setSuggestions(results);
       setOpen(results.length > 0);
     }, 300);
   }, [query]);
 
-  const handleInput = async (event) => {
-    event.preventDefault();
-    if (!query) return;
+  //const handleInput = async (event) => {
+  //  event.preventDefault();
+  //  if (!query) return;
 
-    // configure server to return full weather data from the submit endpoint
-    const res = await fetch(`http://localhost:3000/submit?q=${encodeURIComponent(query)}`);
-    const data = await res.json();
-    onResults(data);
-  }
+  //  // configure server to return full weather data from the submit endpoint
+  //  const res = await fetch(`http://localhost:3000/submit?q=${encodeURIComponent(query)}`);
+  //  const data = await res.json();
+  //  onResults(data);
+  //}
 
   return (
-    <div>
-      <form onSubmit={handleInput}>
+    <div
+      style={{ position: "relative" }}
+    >
+      <form>
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
@@ -52,6 +53,32 @@ function SearchBar() {
         />
         <button type="submit">Search</button>
       </form>
+
+      {open && suggestions.length > 0 && (
+        <ul
+          role="listbox"
+          style={{
+            position: "absolute",
+            top: "100%",
+            left: 0,
+            right: 0,
+            margin: 0,
+            padding: 0,
+            zIndex: 1000,
+          }}
+        >
+          {suggestions.map((l) => (
+            <li
+              key={l.id}
+              role="option"
+              // add onMouseDown action
+              style={{ padding: "8px 12px" }}
+            >
+              {l.name}, {l.admin1}
+            </li>
+          ))}
+        </ul>
+      )} 
     </div>
   )
 }
