@@ -1,8 +1,10 @@
 import express from 'express';
 import path from 'path';
 import axios from 'axios';
+import cors from 'cors';
 
 const app = express();
+app.use(cors({ origin: 'http://localhost:3000' }));
 
 app.get('/search', async (req, res) => {
   const param = req.query.q;
