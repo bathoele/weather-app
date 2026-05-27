@@ -14,6 +14,17 @@ app.get('/search', async (req, res) => {
   }
 })
 
+app.get('/submit', async (req, res) => {
+  const param = req.query.q;
+  try {
+    const response = await axios.get(`https://api.open-meteo.com/v1/search?name=${encodeURIComponent(param)}`);
+    console.log(response.data.results);
+  } catch (error) {
+    console.error(error);
+  }
+})
+
+
 app.listen(3000, () => {
   console.log('Server is running on http://localhost:3000');
 })

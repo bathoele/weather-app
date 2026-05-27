@@ -12,16 +12,23 @@ function SearchBar() {
     if (query.length < 3) {
       setSuggestions([]);
       setOpen(false);
+      return;
     }
+
+    // clears the timeout of the current debounce setTimeout below
+    clearTimeout(deboRef.current);
+    deboRef.current = setTimeout(async () => {
+      const res = await fetch(`http://localhost:3000/search?q=${encodeURIComponent(query)}`);
+    })
   })
 
   const handleInput = async (event) => {
-    event.preventDefault()
-    if (!query) return
+    event.preventDefault();
+    if (!query) return;
 
-    const res = await fetch(`http://localhost:3000/search?q=${encodeURIComponent(query)}`)
-    const data = await res.json()
-    onResults(data)
+    const res = await fetch(`http://localhost:3000/submit?q=${encodeURIComponent(query)}`);
+    const data = await res.json();
+    onResults(data);
   }
 
   return (
