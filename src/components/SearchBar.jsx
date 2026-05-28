@@ -23,15 +23,16 @@ function SearchBar() {
       const results = data.results || [];
 
       setSuggestions(results);
-      setOpen(results.length > 0);
+      setOpen(suggestions.length > 0);
     }, 200);
   }, [query]);
 
   // temporarily removed async
   const handleChoice = (choice) => {
-    setQuery(choice.name);
+    setQuery(choice);
     setSuggestions([]);
     setOpen(false);
+    console.log(choice);
 
     // configure server to return full weather data from the submit endpoint
     // const res = await fetch(`http://localhost:3000/submit?q=${encodeURIComponent(query)}`);
@@ -42,7 +43,7 @@ function SearchBar() {
   const handleInput = (e) => {
     e.preventDefault();
     if (suggestions.length > 0) {
-      handleChoice(suggestions[0]);
+      handleChoice(suggestions[0].name);
     }
   }
 
@@ -80,7 +81,7 @@ function SearchBar() {
               key={l.id}
               role="option"
               // add onMouseDown action
-              onMouseDown={() => {setQuery(l.name); setOpen(false); handleInput}}
+              onMouseDown={() => {setQuery(l.name); setOpen(false); handleChoice(l.name)}}
               style={{ padding: "8px 12px", cursor: "pointer" }}
             >
               {l.name}, {l.admin1}
