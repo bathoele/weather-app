@@ -42,7 +42,7 @@ function SearchBar() {
   const handleInput = (e) => {
     e.preventDefault();
     if (suggestions.length > 0) {
-      handleSelect(suggestions[0]);
+      handleChoice(suggestions[0]);
     }
   }
 
