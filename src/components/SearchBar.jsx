@@ -21,28 +21,36 @@ function SearchBar() {
       const res = await fetch(`http://localhost:3000/search?q=${encodeURIComponent(query)}`);
       const data = await res.json();
       const results = data.results || [];
-      console.log(results);
 
       setSuggestions(results);
       setOpen(results.length > 0);
-    }, 300);
+    }, 200);
   }, [query]);
 
-  //const handleInput = async (event) => {
-  //  event.preventDefault();
-  //  if (!query) return;
+  // temporarily removed async
+  const handleChoice = (choice) => {
+    setQuery(choice.name);
+    setSuggestions([]);
+    setOpen(false);
 
-  //  // configure server to return full weather data from the submit endpoint
-  //  const res = await fetch(`http://localhost:3000/submit?q=${encodeURIComponent(query)}`);
-  //  const data = await res.json();
-  //  onResults(data);
-  //}
+    // configure server to return full weather data from the submit endpoint
+    // const res = await fetch(`http://localhost:3000/submit?q=${encodeURIComponent(query)}`);
+    // const data = await res.json();
+    // onResults(data);
+  }
+
+  const handleInput = (e) => {
+    e.preventDefault();
+    if (suggestions.length > 0) {
+      handleSelect(suggestions[0]);
+    }
+  }
 
   return (
     <div
       style={{ position: "relative" }}
     >
-      <form>
+      <form onSubmit={handleInput}>
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
@@ -72,7 +80,8 @@ function SearchBar() {
               key={l.id}
               role="option"
               // add onMouseDown action
-              style={{ padding: "8px 12px" }}
+              onMouseDown={() => {setQuery(l.name); setOpen(false); handleInput}}
+              style={{ padding: "8px 12px", cursor: "pointer" }}
             >
               {l.name}, {l.admin1}
             </li>
