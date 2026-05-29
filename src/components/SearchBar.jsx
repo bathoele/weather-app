@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 
-function SearchBar() {
+function SearchBar({ onResults }) {
   const [query, setQuery] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   // the open hook controls suggestion list display
@@ -39,8 +39,7 @@ function SearchBar() {
 
     const res = await fetch(`http://localhost:3000/submit?lat=${encodeURIComponent(lat)}&long=${encodeURIComponent(long)}`);
     const data = await res.json();
-    console.log(data);
-    // onResults(data);
+    onResults(data);
   }
 
   const handleInput = (e) => {
