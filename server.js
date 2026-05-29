@@ -4,7 +4,7 @@ import axios from 'axios';
 import cors from 'cors';
 
 const app = express();
-// origin wildcard isn't secure!!
+// origin wildcard isn't secure!! fix later
 app.use(cors({
   origin: '*'
 }));
@@ -25,12 +25,12 @@ app.get('/submit', async (req, res) => {
   const long = req.query.long;
   try {
     const response = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${encodeURIComponent(lat)}&longitude=${encodeURIComponent(long)}&hourly=temperature_2m&temperature_unit=fahrenheit`);
-    console.log(response.data);
+    // console.log(response.data);
+    res.send(response.data);
   } catch (error) {
     console.error(error);
   }
 })
-
 
 app.listen(3000, () => {
   console.log('Server is running on http://localhost:3000');

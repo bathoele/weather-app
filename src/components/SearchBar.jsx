@@ -33,11 +33,13 @@ function SearchBar() {
     setSuggestions([]);
     setOpen(false);
 
+    // might have to send choice.name to the forecast display component here
     const lat = choice.latitude;
     const long = choice.longitude;
 
     const res = await fetch(`http://localhost:3000/submit?lat=${encodeURIComponent(lat)}&long=${encodeURIComponent(long)}`);
     const data = await res.json();
+    console.log(data);
     // onResults(data);
   }
 
