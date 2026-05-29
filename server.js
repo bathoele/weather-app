@@ -25,7 +25,7 @@ app.get('/submit', async (req, res) => {
   const long = req.query.long;
   try {
     const response = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${encodeURIComponent(lat)}&longitude=${encodeURIComponent(long)}&hourly=temperature_2m&temperature_unit=fahrenheit`);
-    console.log(response);
+    console.log(response.data);
   } catch (error) {
     console.error(error);
   }

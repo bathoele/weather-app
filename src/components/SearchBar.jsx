@@ -28,7 +28,8 @@ function SearchBar() {
   }, [query]);
 
   const handleChoice = async (choice) => {
-    setQuery(choice);
+    clearTimeout(deboRef.current);
+    setQuery("");
     setSuggestions([]);
     setOpen(false);
 
