@@ -23,8 +23,8 @@ app.get('/search', async (req, res) => {
 app.get('/submit', async (req, res) => {
   const param = req.query.q;
   try {
-    const response = await axios.get(`https://api.open-meteo.com/v1/search?name=${encodeURIComponent(param)}`);
-    console.log(response.data.results);
+    const response = await axios.get(`https://api.open-meteo.com/v1/forecast?name=${encodeURIComponent(param)}&hourly=temperature_2m&temperature_unit=fahrenheit`);
+    console.log(response.data);
   } catch (error) {
     console.error(error);
   }

@@ -27,16 +27,16 @@ function SearchBar() {
     }, 200);
   }, [query]);
 
-  // temporarily removed async
-  const handleChoice = (choice) => {
+  const handleChoice = async (choice) => {
     setQuery(choice);
     setSuggestions([]);
     setOpen(false);
     console.log(choice);
 
     // configure server to return full weather data from the submit endpoint
-    // const res = await fetch(`http://localhost:3000/submit?q=${encodeURIComponent(query)}`);
-    // const data = await res.json();
+    const res = await fetch(`http://localhost:3000/submit?q=${encodeURIComponent(query)}`);
+    const data = await res.json();
+    console.log(data);
     // onResults(data);
   }
 
