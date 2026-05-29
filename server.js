@@ -21,10 +21,11 @@ app.get('/search', async (req, res) => {
 })
 
 app.get('/submit', async (req, res) => {
-  const param = req.query.q;
+  const lat = req.query.lat;
+  const long = req.query.long;
   try {
-    const response = await axios.get(`https://api.open-meteo.com/v1/forecast?name=${encodeURIComponent(param)}&hourly=temperature_2m&temperature_unit=fahrenheit`);
-    console.log(response.data);
+    const response = await axios.get(`https://api.open-meteo.com/v1/forecast?latitude=${encodeURIComponent(lat)}&longitude=${encodeURIComponent(long)}&hourly=temperature_2m&temperature_unit=fahrenheit`);
+    console.log(response);
   } catch (error) {
     console.error(error);
   }
