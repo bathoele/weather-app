@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import HourDisplay from "./HourDisplay";
 import TodayDisplay from "./TodayDisplay";
 import DailyDisplay from "./DailyDisplay";
 
-function DisplayContainer() {
+function DisplayContainer({data}) {
+
   return(
-    <div>Yay</div>
+    <HourDisplay data={data} />
   )
 }
 

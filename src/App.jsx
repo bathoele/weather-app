@@ -4,14 +4,14 @@ import DisplayContainer from "./components/DisplayContainer"
 
 function App() {
   // this links the weather data to future display components
-  const [results, setResults] = useState([])
+  const [results, setResults] = useState(null);
 
-  return(
+  return (
     <div>
       <SearchBar onResults={setResults} />
-      <DisplayContainer />
+      {results && <DisplayContainer data={results} />}
     </div>
-  )
+  );
 }
 
 export default App
