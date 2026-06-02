@@ -24,7 +24,6 @@ function HourDisplay({data}) {
     };
   });
 
-  console.log(days);
   for (let i = 0; i < hours.length; i++) {
     items.push({
       id: i + 1,
@@ -41,7 +40,6 @@ function HourDisplay({data}) {
           <h3>{day.title}</h3>
           {items.map((item) => {
             if (index == 0 && item.date == day.date) {
-              console.log(item.hour);
               return item.hour >= nowHour ? <HourItem key={item.id} data={item} /> : null;
             } else if (item.date == day.date) return <HourItem key={item.id} data={item} />;
           })}
