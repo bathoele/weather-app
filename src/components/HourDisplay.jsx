@@ -40,7 +40,8 @@ function HourDisplay({data}) {
         <ul>
           <h3>{day.title}</h3>
           {items.map((item) => {
-            if (index == 0) {
+            if (index == 0 && item.date == day.date) {
+              console.log(item.hour);
               return item.hour >= nowHour ? <HourItem key={item.id} data={item} /> : null;
             } else if (item.date == day.date) return <HourItem key={item.id} data={item} />;
           })}
