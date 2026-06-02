@@ -4,6 +4,8 @@ import HourItem from "./HourItem";
 function HourDisplay({data}) {
   const dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const nowHour = new Date().getHours();
+  
   const hours = data.hourly.time;
   const temps = data.hourly.temperature_2m;
   const items = [];
@@ -23,24 +25,24 @@ function HourDisplay({data}) {
   });
 
   console.log(days);
-
-  // Add function to join related data as objects in an array. Map through array, sending each object to HourItem
   for (let i = 0; i < hours.length; i++) {
     items.push({
       id: i + 1,
       date: hours[i].split("T")[0],
-      hour: hours[i].split("T")[1],
+      hour: hours[i].split("T")[1].split(":")[0].replace(/^0+(?=\d)/, ""),
       temp: temps[i]
     });
   }
 
   return (
     <div>
-      {days.map((day) => (
+      {days.map((day, index) => (
         <ul>
           <h3>{day.title}</h3>
           {items.map((item) => {
-            if (item.date == day.date) return <HourItem key={item.id} data={item} />;
+            if (index == 0) {
+              return item.hour >= nowHour ? <HourItem key={item.id} data={item} /> : null;
+            } else if (item.date == day.date) return <HourItem key={item.id} data={item} />;
           })}
         </ul>
       ))}
