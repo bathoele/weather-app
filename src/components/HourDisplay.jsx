@@ -2,10 +2,8 @@ import React from "react";
 import HourItem from "./HourItem";
 
 function HourDisplay({data}) {
-  const monthNames = [
-    "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-  ];
+  const dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const hours = data.hourly.time;
   const temps = data.hourly.temperature_2m;
   const items = [];
@@ -15,12 +13,14 @@ function HourDisplay({data}) {
     forecastDates.push(hour.split("T")[0]);
   });
 
-  const days = [...new Set(forecastDates)];
-  days = days.forEach((day) => {
+  const days = [...new Set(forecastDates)].map((day) => {
     const date = new Date(day);
 
-    return `${date.getDay()}, ${date}`;
-  })
+    return {
+      title: `${dayNames[date.getDay()]}, ${monthNames[date.getMonth()]} ${date.getDate() + 1}`,
+      date: day
+    };
+  });
 
   console.log(days);
 
