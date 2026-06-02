@@ -28,19 +28,23 @@ function HourDisplay({data}) {
   for (let i = 0; i < hours.length; i++) {
     items.push({
       id: i + 1,
-      time: hours[i],
+      date: hours[i].split("T")[0],
+      hour: hours[i].split("T")[1],
       temp: temps[i]
     });
   }
 
   return (
-    <ul>
-      <h3></h3>
-      {items.map((item) => (
-        // li will instead be a separate component
-        <HourItem key={item.id} data={item} />
+    <div>
+      {days.map((day) => (
+        <ul>
+          <h3>{day.title}</h3>
+          {items.map((item) => {
+            if (item.date == day.date) return <HourItem key={item.id} data={item} />;
+          })}
+        </ul>
       ))}
-    </ul>
+    </div>
   )
 }
 
