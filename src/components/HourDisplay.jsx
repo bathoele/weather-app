@@ -6,8 +6,8 @@ function HourDisplay({data}) {
   const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const nowHour = new Date().getHours();
   
-  const hours = data.hourly.time;
-  const temps = data.hourly.temperature_2m;
+  const h = data.hourly;
+  const hours = h.time;
   const items = [];
   const forecastDates = [];
   
@@ -29,7 +29,14 @@ function HourDisplay({data}) {
       id: i + 1,
       date: hours[i].split("T")[0],
       hour: hours[i].split("T")[1].split(":")[0].replace(/^0+(?=\d)/, ""),
-      temp: temps[i]
+      temp: h.temperature_2m[i],
+      humidity: h.relative_humidity_2m[i],
+      code: h.weather_code[i],
+      w_dir: h.wind_direction_10m[i],
+      w_speed: h.wind_speed_10m[i],
+      cloud: h.cloud_cover[i],
+      uv: h.uv_index[i],
+      precip_per: h.precipitation_probability[i]
     });
   }
 
