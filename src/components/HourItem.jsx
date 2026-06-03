@@ -10,7 +10,11 @@ function HourItem({data: d}) {
 
   return (
     <li>
-      <ul>
+      <ul style={{
+        display: "flex",
+        flexDirection: "row",
+        listStyle: "none"
+      }}>
         <li>{hour}</li>
         <li>{d.code}</li>
         <li>{d.temp}</li>
