@@ -16,10 +16,10 @@ function HourDisplay({data}) {
   });
 
   const days = [...new Set(forecastDates)].map((day) => {
-    const date = new Date(day);
+    const date = new Date(day.replace(/-/g, "/"));
 
     return {
-      title: `${dayNames[date.getDay()]}, ${monthNames[date.getMonth()]} ${date.getDate() + 1}`,
+      title: `${dayNames[date.getDay()]}, ${monthNames[date.getMonth()]} ${date.getDate()}`,
       date: day
     };
   });
@@ -43,8 +43,8 @@ function HourDisplay({data}) {
   return (
     <div>
       {days.map((day, index) => (
-        <ul>
-          <h3>{day.title}</h3>
+        <ul key={day.date}>
+          <h3 key={days.length + index}>{day.title}</h3>
           {items.map((item) => {
             if (index == 0 && item.date == day.date) {
               return item.hour >= nowHour ? <HourItem key={item.id} data={item} /> : null;
