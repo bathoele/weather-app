@@ -7,7 +7,8 @@ function DisplayContainer({data}) {
 
   return(
     // <HourDisplay data={data} />
-    <TodayDisplay data={data} />
+    // <TodayDisplay data={data} />
+    <DailyDisplay data={data} />
   )
 }
 
