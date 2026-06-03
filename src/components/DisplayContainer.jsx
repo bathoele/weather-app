@@ -6,7 +6,8 @@ import DailyDisplay from "./DailyDisplay";
 function DisplayContainer({data}) {
 
   return(
-    <HourDisplay data={data} />
+    // <HourDisplay data={data} />
+    <TodayDisplay data={data} />
   )
 }
 
