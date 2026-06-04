@@ -10,11 +10,7 @@ function HourItem({data: d}) {
 
   return (
     <li className="mb-2 border-2 p-2 px-3">
-      <ul style={{
-        display: "flex",
-        flexDirection: "row",
-        listStyle: "none"
-      }}>
+      <ul className="flex flex-row list-none justify-between">
         <li>{hour}</li>
         <li>{d.code}</li>
         <li>{d.temp}</li>
@@ -26,21 +22,15 @@ function HourItem({data: d}) {
         >
           {isOpen ? "Close" : "Open"}
         </button>
-        {isOpen && (
-          <li>
-            <ul style={{
-              listStyle: "none",
-              padding: "2px"
-            }}
-            >
-              <li>{d.w_dir}</li>
-              <li>{d.w_speed}</li>
-              <li>{d.cloud}</li>
-              <li>{d.uv}</li>
-            </ul>
-          </li>
-        )}
       </ul>
+      {isOpen && (
+        <ul className="list-none p-2 flex flex-row">
+          <li>{d.w_dir}</li>
+          <li>{d.w_speed}</li>
+          <li>{d.cloud}</li>
+          <li>{d.uv}</li>
+        </ul>
+      )}
     </li>
   )
 }
