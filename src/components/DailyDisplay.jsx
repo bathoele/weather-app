@@ -1,15 +1,22 @@
 import React from "react";
+import DailyItem from "./DailyItem";
 
 function DailyDisplay({data}) {
-  const dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-  const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const dayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const d = data.daily;
+  const dates = d.time;
   const items = [];
   
+  dates.map((day) => {
+    const date = new Date(day.replace(/-/g, "/"));
+
+    return `${dayNames[date.getDate()]} ${date.getDate()}`
+  })
+
   for (let i = 0; i < d.time.length; i++) {
     items.push({
       id: i + 1,
-      date: d.time[i],
+      date: dates[i],
       max_temp: d.temperature_2m_max[i],
       min_temp: d.temperature_2m_min[i],
       humidity: d.relative_humidity_2m_max[i],
@@ -24,9 +31,9 @@ function DailyDisplay({data}) {
 
   return (
     <div>
-      <ul>
-
-      </ul>
+      {items.map((item) => (
+        <DailyItem data={item} />
+      ))}
     </div>
   )
 }
