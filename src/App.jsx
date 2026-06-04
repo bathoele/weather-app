@@ -8,9 +8,11 @@ function App() {
   const [results, setResults] = useState(null);
 
   return (
-    <div>
-      <SearchBar onResults={setResults} />
-      {results && <DisplayContainer data={results} />}
+    <div className="pt-5">
+      <div className="w-200 border-2 ml-auto mr-auto">
+        <SearchBar onResults={setResults} />
+        {results && <DisplayContainer data={results} />}
+      </div>
     </div>
   );
 }

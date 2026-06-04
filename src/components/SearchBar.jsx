@@ -51,10 +51,13 @@ function SearchBar({ onResults }) {
 
   return (
     <div
-      style={{ position: "relative" }}
+      className=""
     >
-      <form onSubmit={handleInput}>
+      <form
+        className="flex gap-4"
+        onSubmit={handleInput}>
         <input
+          className="border-2 p-1"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search..."
