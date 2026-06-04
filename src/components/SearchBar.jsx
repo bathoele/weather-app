@@ -65,7 +65,12 @@ function SearchBar({ onResults }) {
           onBlur={() => setTimeout(() => setOpen(false), 150)}
           autoComplete="off"
         />
-        <button type="submit">Search</button>
+        <button
+          className="border-2"
+          type="submit"
+        >
+          Search
+        </button>
       </form>
 
       {open && suggestions.length > 0 && (

@@ -9,7 +9,7 @@ function HourItem({data: d}) {
   }
 
   return (
-    <li>
+    <li className="mb-2 border-2 p-2 px-3">
       <ul style={{
         display: "flex",
         flexDirection: "row",
@@ -41,8 +41,6 @@ function HourItem({data: d}) {
           </li>
         )}
       </ul>
-      
-      
     </li>
   )
 }

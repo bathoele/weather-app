@@ -44,7 +44,7 @@ function HourDisplay({data}) {
     <div>
       {days.map((day, index) => (
         <ul key={day.date}>
-          <h3 key={days.length + index}>{day.title}</h3>
+          <h3 key={days.length + index} className="text-lg font-medium py-2">{day.title}</h3>
           {items.map((item) => {
             if (index == 0 && item.date == day.date) {
               return item.hour >= nowHour ? <HourItem key={item.id} data={item} /> : null;
