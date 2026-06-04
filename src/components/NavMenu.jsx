@@ -1,23 +1,22 @@
 import React, { useState } from "react";
 
 function NavMenu({current, onActive}) {
-  const [active, setActive] = useState("today");
 
-  const pages = ["Today", "Hourly", "7 Day"]
-
-  const handleClick = (page) => {
-    setActive(page);
-  }
+  const pages = [
+    { name: "Today", id: "today"},
+    { name: "Hourly", id: "hourly"},
+    { name: "7 Day", id: "daily"}  
+  ]
   
   return(
     <nav>
       {pages.map((page) => {
         <button
-          key={page}
-          className={active == page ? 'active' : ''}
-          onClick={handleClick(page)}
+          key={page.id}
+          className={active == page.id ? 'active' : ''}
+          onClick={onActive(page.id)}
         >
-          {page}
+          {page.name}
         </button>
       })}
         
