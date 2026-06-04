@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import SearchBar  from "./components/SearchBar"
 import DisplayContainer from "./components/DisplayContainer"
+import NavMenu from "./components/NavMenu";
 
 function App() {
   // this links the weather data to future display components

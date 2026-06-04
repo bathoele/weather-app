@@ -1,32 +1,26 @@
 import React, { useState } from "react";
 
-function NavMenu() {
+function NavMenu({current, onActive}) {
   const [active, setActive] = useState("today");
 
-  const handleClick = () => {
+  const pages = ["Today", "Hourly", "7 Day"]
 
+  const handleClick = (page) => {
+    setActive(page);
   }
   
   return(
     <nav>
-      <button
-        className="today"
-        onClick={setActive(this.className)}
-      >
-        Today
-      </button>
-      <button
-        className="hourly"
-        onClick={setActive(this.className)}
-      >
-        Hourly
-      </button>
-      <button
-        className="daily"
-        onClick={setActive(this.className)}
-      >
-        7 Day
-      </button>
+      {pages.map((page) => {
+        <button
+          key={page}
+          className={active == page ? 'active' : ''}
+          onClick={handleClick(page)}
+        >
+          {page}
+        </button>
+      })}
+        
     </nav>
   )
 }
