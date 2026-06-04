@@ -1,7 +1,6 @@
 import React from "react";
 
 function DailyItem({data: d}) {
-  console.log(d);
   
   return (
     <ul key={d.id}>
@@ -18,7 +17,7 @@ function DailyItem({data: d}) {
         {d.code}
       </li>
       <li>
-        {d.presip_per}
+        {d.precip_per}
       </li>
       <li>
         {d.precip_sum}

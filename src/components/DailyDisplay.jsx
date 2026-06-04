@@ -28,11 +28,11 @@ function DailyDisplay({data}) {
       precip_sum: d.precipitation_sum[i]
     });
   }
-
+  
   return (
     <div>
       {items.map((item) => (
-        <DailyItem data={item} />
+      <DailyItem data={item} />
       ))}
     </div>
   )
