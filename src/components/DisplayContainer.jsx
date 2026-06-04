@@ -6,19 +6,15 @@ import NavMenu from "./NavMenu";
 
 function DisplayContainer({data}) {
   const [active, setActive] = useState("today");
+  console.log(active);
 
-  const components = [
-    { name: "today", el: `${<TodayDisplay data={data} />}`},
-    { name: "hourly", el: `${<HourDisplay data={data} />}`},
-    { name: "daily", el: `${<DailyDisplay data={data} />}`}
-  ]
 
   return(
     <div>
       <NavMenu current={active} onActive={setActive}/>
-      {components.map((comp) => {
-        if (comp.name == active) return comp.el;
-      })}
+      {active == "today" ? <TodayDisplay data={data} /> : null}
+      {active == "hourly" ? <HourDisplay data={data} /> : null}
+      {active == "daily" ? <DailyDisplay data={data} /> : null}
     </div>
   )
 }

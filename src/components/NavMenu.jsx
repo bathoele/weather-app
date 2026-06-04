@@ -7,21 +7,29 @@ function NavMenu({current, onActive}) {
     { name: "Hourly", id: "hourly"},
     { name: "7 Day", id: "daily"}  
   ]
+
+  const handleClick = (page) => {
+    console.log(page);
+    onActive(page);
+  }
   
   return(
     <nav>
+      <ul>
+
       {pages.map((page) => {
-        <button
+        <li
           key={page.id}
-          className={active == page.id ? 'active' : ''}
-          onClick={onActive(page.id)}
+          className={page.id == current ? 'active' : ''}
+          onClick={handleClick(page.id)}
         >
           {page.name}
-        </button>
+        </li>
       })}
+      </ul>
         
     </nav>
   )
 }
 
-export default NavMenu;
+export default NavMenu; 
