@@ -32,7 +32,7 @@ function DailyDisplay({data}) {
   return (
     <div>
       {items.map((item) => (
-      <DailyItem data={item} />
+        <DailyItem key={item.id} data={item} />
       ))}
     </div>
   )

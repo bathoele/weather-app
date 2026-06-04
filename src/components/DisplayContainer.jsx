@@ -6,8 +6,6 @@ import NavMenu from "./NavMenu";
 
 function DisplayContainer({data}) {
   const [active, setActive] = useState("today");
-  console.log(active);
-
 
   return(
     <div>

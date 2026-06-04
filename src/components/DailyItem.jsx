@@ -3,7 +3,7 @@ import React from "react";
 function DailyItem({data: d}) {
   
   return (
-    <ul key={d.id}>
+    <ul>
       <li>
         {d.date}
       </li>

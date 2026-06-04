@@ -9,7 +9,6 @@ function NavMenu({current, onActive}) {
   ]
 
   const handleClick = (page) => {
-    console.log(page);
     onActive(page);
   }
   
@@ -17,15 +16,15 @@ function NavMenu({current, onActive}) {
     <nav>
       <ul>
 
-      {pages.map((page) => {
-        <li
+      {pages.map((page) => (
+        <button
           key={page.id}
-          className={page.id == current ? 'active' : ''}
-          onClick={handleClick(page.id)}
+          className={page.id === current ? 'active' : ''}
+          onClick={() => handleClick(page.id)}
         >
           {page.name}
-        </li>
-      })}
+        </button>
+      ))}
       </ul>
         
     </nav>
