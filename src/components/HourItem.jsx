@@ -11,8 +11,8 @@ function HourItem({data: d}) {
   return (
     <li className="mb-2 p-2 px-4 bg-blue-100 rounded-lg">
       <ul className="flex flex-row list-none items-center">
-        <li className="w-15 border-2">{hour}</li>
-        <li className="flex items-center gap-1 border-2 justify-left ml-20">
+        <li className="w-15">{hour}</li>
+        <li className="flex items-center gap-1 justify-left ml-12">
           <img
             src={d.icon}
             alt="Clear day"
@@ -21,9 +21,9 @@ function HourItem({data: d}) {
           />
           {d.code}
         </li>
-        <li className="ml-auto">{Math.floor(d.temp)}</li>
-        <li className="border-2 mr-25 ml-30">{d.precip_per}%</li>
-        <li className="mr-25 ml-0">{d.humidity}%</li>
+        <li className="ml-auto w-10">{Math.floor(d.temp)}</li>
+        <li className="mr-20 ml-20 w-10">{d.precip_per}%</li>
+        <li className="mr-25 ml-0 w-10">{d.humidity}%</li>
         <button
         className="mr-0"
         onClick={() => setIsOpen(!isOpen)}
