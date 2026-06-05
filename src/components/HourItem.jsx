@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import clearDay from '@meteocons/svg/fill/clear-day.svg?url';
 
 function HourItem({data: d}) {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,7 +13,15 @@ function HourItem({data: d}) {
     <li className="mb-2 border-2 p-2 px-3">
       <ul className="flex flex-row list-none justify-between">
         <li>{hour}</li>
-        <li>{d.code}</li>
+        <li className="flex">
+          <img
+            src={clearDay}
+            alt="Clear day"
+            width="32"
+            height="32"
+          />
+          {d.code}
+        </li>
         <li>{d.temp}</li>
         <li>{d.precip_per}</li>
         <li>{d.humidity}</li>
