@@ -65,10 +65,6 @@ function HourDisplay({data}) {
     };
   });
 
-  const convertCode = (code) => {
-
-  }
-
   for (let i = 0; i < hours.length; i++) {
     items.push({
       id: i + 1,
@@ -86,16 +82,21 @@ function HourDisplay({data}) {
     });
   }
 
+  const sortDisplay = (index, item, day) => {
+    if (index == 0 && item.date == day.date) {
+      return item.hour >= nowHour ? <HourItem key={item.id} data={item} /> : null;
+    } else if (item.date == day.date) {
+      return <HourItem key={item.id} data={item} />;
+    }
+  }
+
   return (
     <div>
       {days.map((day, index) => (
         <ul key={day.date}>
           <h3 key={days.length + index} className="text-lg font-medium py-2">{day.title}</h3>
-          {items.map((item) => {
-            if (index == 0 && item.date == day.date) {
-              return item.hour >= nowHour ? <HourItem key={item.id} data={item} /> : null;
-            } else if (item.date == day.date) return <HourItem key={item.id} data={item} />;
-          })}
+          {index === 0 ? <ul></ul> : null}
+          {items.map((item) => sortDisplay(index, item, day))}
         </ul>
       ))}
     </div>

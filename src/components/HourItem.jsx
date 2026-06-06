@@ -4,7 +4,9 @@ function HourItem({data: d}) {
   const [isOpen, setIsOpen] = useState(false);
 
   let hour = d.hour > 12 ? (d.hour - 12) + "pm" : d.hour + "am";
-  if (hour == "0am") {
+  if (hour == "12am") {
+    hour = "12pm";
+  } else if (hour == "0am") {
     hour = "12am";
   }
 
