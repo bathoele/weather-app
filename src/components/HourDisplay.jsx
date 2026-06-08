@@ -2,9 +2,10 @@ import React from "react";
 import HourItem from "./HourItem";
 
 function HourDisplay({data}) {
-  const dayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   const nowHour = new Date().getHours();
+  const isDay = data.hourly.is_day === 1 ? "day" : "night";
 
   const icons = import.meta.glob('/node_modules/@meteocons/svg/monochrome/*.svg', {
     eager: true,
@@ -13,16 +14,18 @@ function HourDisplay({data}) {
   })
 
   const getIcon = (slug) => {
+    // add night param to track whether it is day or night, plug into url
     return icons[`/node_modules/@meteocons/svg/monochrome/${slug}.svg`];
   }
 
+  // FIX THISS
   const weatherCodes = {
-    0:  { desc: "Clear Sky",                     icon: getIcon("clear-day") },
-    1:  { desc: "Mainly Clear",                  icon: getIcon("mostly-clear-day") },
-    2:  { desc: "Partly Cloudy",                 icon: getIcon("partly-cloudy-day") },
+    0:  { desc: "Clear Sky",                     icon: getIcon(`clear-${isDay}`) },
+    1:  { desc: "Mainly Clear",                  icon: getIcon(`mostly-clear-${isDay}`) },
+    2:  { desc: "Partly Cloudy",                 icon: getIcon(`partly-cloudy-${isDay}`) },
     3:  { desc: "Overcast",                      icon: getIcon("overcast") },
-    45: { desc: "Fog",                           icon: getIcon("fog-day") },
-    48: { desc: "Depositing Rime Fog",           icon: getIcon("fog-day") },
+    45: { desc: "Fog",                           icon: getIcon(`fog-${isDay}`) },
+    48: { desc: "Depositing Rime Fog",           icon: getIcon(`fog-${isDay}`) },
     51: { desc: "Light Drizzle",                 icon: getIcon("drizzle") },
     53: { desc: "Moderate Drizzle",              icon: getIcon("drizzle") },
     55: { desc: "Dense Drizzle",                 icon: getIcon("extreme-drizzle") },
@@ -37,14 +40,14 @@ function HourDisplay({data}) {
     73: { desc: "Moderate Snowfall",             icon: getIcon("snow") },
     75: { desc: "Heavy Snowfall",                icon: getIcon("extreme-snow") },
     77: { desc: "Snow Grains",                   icon: getIcon("snow") },
-    80: { desc: "Slight Rain Showers",           icon: getIcon("partly-cloudy-day-rain") },
-    81: { desc: "Moderate Rain Showers",         icon: getIcon("partly-cloudy-day-rain") },
+    80: { desc: "Slight Rain Showers",           icon: getIcon(`partly-cloudy-${isDay}-rain`) },
+    81: { desc: "Moderate Rain Showers",         icon: getIcon(`partly-cloudy-${isDay}-rain`) },
     82: { desc: "Violent Rain Showers",          icon: getIcon("extreme-rain") },
-    85: { desc: "Slight Snow Showers",           icon: getIcon("partly-cloudy-day-snow") },
+    85: { desc: "Slight Snow Showers",           icon: getIcon(`partly-cloudy-${isDay}-snow`) },
     86: { desc: "Heavy Snow Showers",            icon: getIcon("extreme-snow") },
-    95: { desc: "Thunderstorm",                  icon: getIcon("thunderstorms-day") },
-    96: { desc: "Thunderstorm with Slight Hail", icon: getIcon("thunderstorms-day-rain") },
-    99: { desc: "Thunderstorm with Heavy Hail",  icon: getIcon("thunderstorms-day-extreme-rain") },
+    95: { desc: "Thunderstorm",                  icon: getIcon(`thunderstorms-${isDay}`) },
+    96: { desc: "Thunderstorm with Slight Hail", icon: getIcon(`thunderstorms-${isDay}-rain`) },
+    99: { desc: "Thunderstorm with Heavy Hail",  icon: getIcon(`thunderstorms-${isDay}-extreme-rain`) },
   };
   
   const h = data.hourly;
@@ -103,8 +106,7 @@ function HourDisplay({data}) {
         </colgroup>
         {days.map((day, index) => (
           <React.Fragment key={day.date}>
-            
-            
+
             {index === 0 && 
               <thead>
                 <tr>
@@ -122,8 +124,8 @@ function HourDisplay({data}) {
                 </tr>
               </thead>
             }
-            <tbody>
 
+            <tbody>
             {index !== 0 &&
               <tr>
                 <td colSpan={6}>
@@ -131,8 +133,7 @@ function HourDisplay({data}) {
                 </td>
               </tr>
             }
-              
-              {items.map((item) => displayItems(index, item, day))}
+            {items.map((item) => displayItems(index, item, day))}
             </tbody>
           </React.Fragment>
         ))}
