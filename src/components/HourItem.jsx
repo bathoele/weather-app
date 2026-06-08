@@ -11,38 +11,53 @@ function HourItem({data: d}) {
   }
 
   return (
-    <li className="mb-2 p-2 px-4 bg-blue-100 rounded-lg">
-      <ul className="flex flex-row list-none items-center">
-        <li className="w-15">{hour}</li>
-        <li className="flex items-center gap-1 justify-left ml-12">
+    <React.Fragment>
+      <tr>
+        <td>{hour}</td>
+        <td>
           <img
             src={d.icon}
             alt="Clear day"
             width="40"
             height="40"
-          />
+            />
           {d.code}
-        </li>
-        <li className="ml-auto w-10">{Math.floor(d.temp)}</li>
-        <li className="mr-20 ml-20 w-10">{d.precip_per}%</li>
-        <li className="mr-25 ml-0 w-10">{d.humidity}%</li>
-        <button
-        className="mr-0"
-        onClick={() => setIsOpen(!isOpen)}
-        style={{ cursor: "pointer" }}
-        >
-          {isOpen ? "Close" : "Open"}
-        </button>
-      </ul>
+        </td>
+        <td>{Math.floor(d.temp)}</td>
+        <td>{d.precip_per}%</td>
+        <td>{d.humidity}%</td>
+        <td>  
+          <button
+          onClick={() => setIsOpen(!isOpen)}
+          style={{ cursor: "pointer" }}
+          >
+            {isOpen ? "Close" : "Open"}
+          </button>
+        </td>
+      </tr>
       {isOpen && (
-        <ul className="list-none p-2 flex flex-row">
-          <li>{d.w_dir}</li>
-          <li>{d.w_speed}</li>
-          <li>{d.cloud}</li>
-          <li>{d.uv}</li>
-        </ul>
+        <tr>
+          <td colSpan={6}>
+            <table className=" table-fixed">
+              <thead>
+                <tr>
+                  <th className="text-left px-2">Wind</th>
+                  <th className="text-left px-2">Cloud Cover</th>
+                  <th className="text-left px-2">UV Index</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td className="px-2">{d.w_dir} {d.w_speed} mph</td>
+                  <td className="px-2">{d.cloud}%</td>
+                  <td className="px-2">{d.uv}</td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
       )}
-    </li>
+    </React.Fragment>
   )
 }
 

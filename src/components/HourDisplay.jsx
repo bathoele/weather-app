@@ -92,13 +92,25 @@ function HourDisplay({data}) {
 
   return (
     <div>
-      {days.map((day, index) => (
-        <ul key={day.date}>
-          <h3 key={days.length + index} className="text-lg font-medium py-2">{day.title}</h3>
-          {index === 0 ? <ul></ul> : null}
-          {items.map((item) => sortDisplay(index, item, day))}
-        </ul>
-      ))}
+      <table>
+        {days.map((day, index) => (
+          <React.Fragment key={day.date}>
+            <tr>
+              <td colSpan={6}>
+                <h3 key={days.length + index} className="text-lg font-medium py-2">{day.title}</h3>
+              </td>
+            </tr>
+            {index === 0 ? <tr>
+              <th>Time</th>
+              <th>Condition</th>
+              <th>Temperature</th>
+              <th>Precipitation</th>
+              <th>Humidity</th>
+            </tr> : null}
+            {items.map((item) => sortDisplay(index, item, day))}
+          </React.Fragment>
+        ))}
+      </table>
     </div>
   )
 }
