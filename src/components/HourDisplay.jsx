@@ -82,7 +82,7 @@ function HourDisplay({data}) {
     });
   }
 
-  const sortDisplay = (index, item, day) => {
+  const displayItems = (index, item, day) => {
     if (index == 0 && item.date == day.date) {
       return item.hour >= nowHour ? <HourItem key={item.id} data={item} /> : null;
     } else if (item.date == day.date) {
@@ -91,33 +91,49 @@ function HourDisplay({data}) {
   }
 
   return (
-    <div className="w-full">
+    <div className="">
       <table className="w-full table-fixed">
         <colgroup>
-          <col className="w-10" />  {/* Time */}
-          <col className="w-32" />  {/* Condition */}
-          <col className="w-28" />  {/* Temperature */}
-          <col className="w-24" />  {/* Precipitation */}
-          <col className="w-24" />  {/* Humidity */}
-          <col className="w-8" />   {/* Button */}
+          <col className="w-15" />
+          <col className="w-25" />
+          <col className="w-20" />
+          <col className="w-20" />
+          <col className="w-20" />
+          <col className="w-8" />
         </colgroup>
         {days.map((day, index) => (
           <React.Fragment key={day.date}>
-            <tr>
-              <td colSpan={5} className="border-2">
-                <h3 key={days.length + index} className="text-lg font-medium py-2">{day.title}</h3>
-              </td>
-            </tr>
-            {index === 0 ? 
-              <tr className="border-2">
-                <th className="text-left">Time</th>
-                <th className="text-left">Condition</th>
-                <th className="text-left">Temperature</th>
-                <th className="text-left">Precipitation</th>
-                <th className="text-left">Humidity</th>
-                <th></th> 
-              </tr> : null}
-            {items.map((item) => sortDisplay(index, item, day))}
+            
+            
+            {index === 0 && 
+              <thead>
+                <tr>
+                  <td colSpan={6}>
+                    <h3 key={days.length + index} className="text-lg font-medium py-2">{day.title}</h3>
+                  </td>
+                </tr>
+                <tr className="">
+                  <th className="text-left">Time</th>
+                  <th className="text-left pl-7">Condition</th>
+                  <th className="text-center">Temperature</th>
+                  <th className="text-center">Precipitation</th>
+                  <th className="text-center">Humidity</th>
+                  <th></th>
+                </tr>
+              </thead>
+            }
+            <tbody>
+
+            {index !== 0 &&
+              <tr>
+                <td colSpan={6}>
+                  <h3 key={days.length + index} className="text-lg font-medium py-2">{day.title}</h3>
+                </td>
+              </tr>
+            }
+              
+              {items.map((item) => displayItems(index, item, day))}
+            </tbody>
           </React.Fragment>
         ))}
       </table>

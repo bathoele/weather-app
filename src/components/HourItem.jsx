@@ -15,17 +15,19 @@ function HourItem({data: d}) {
       <tr>
         <td>{hour}</td>
         <td>
-          <img
-            src={d.icon}
-            alt="Clear day"
-            width="40"
-            height="40"
-            />
-          {d.code}
+          <div className="flex items-center gap-2">
+            <img
+              src={d.icon}
+              alt="Clear day"
+              width="40"
+              height="40"
+              />
+            <span>{d.code}</span>
+          </div>
         </td>
-        <td>{Math.floor(d.temp)}</td>
-        <td>{d.precip_per}%</td>
-        <td>{d.humidity}%</td>
+        <td className="text-center">{Math.floor(d.temp)}</td>
+        <td className="text-center">{d.precip_per}%</td>
+        <td className="text-center">{d.humidity}%</td>
         <td className="w-8">  
           <button
           onClick={() => setIsOpen(!isOpen)}
@@ -41,9 +43,9 @@ function HourItem({data: d}) {
             <table>
               <thead>
                 <tr>
-                  <th className="text-left px-2">Wind</th>
-                  <th className="text-left px-2">Cloud Cover</th>
-                  <th className="text-left px-2">UV Index</th>
+                  <th className="w-40 text-left px-2">Wind</th>
+                  <th className="w-40 text-left px-2">Cloud Cover</th>
+                  <th className="w-40 text-left px-2">UV Index</th>
                 </tr>
               </thead>
               <tbody>
