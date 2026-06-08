@@ -26,7 +26,7 @@ function HourItem({data: d}) {
         <td>{Math.floor(d.temp)}</td>
         <td>{d.precip_per}%</td>
         <td>{d.humidity}%</td>
-        <td>  
+        <td className="w-8">  
           <button
           onClick={() => setIsOpen(!isOpen)}
           style={{ cursor: "pointer" }}
@@ -38,7 +38,7 @@ function HourItem({data: d}) {
       {isOpen && (
         <tr>
           <td colSpan={6}>
-            <table className=" table-fixed">
+            <table>
               <thead>
                 <tr>
                   <th className="text-left px-2">Wind</th>

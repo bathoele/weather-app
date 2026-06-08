@@ -91,22 +91,32 @@ function HourDisplay({data}) {
   }
 
   return (
-    <div>
-      <table>
+    <div className="w-full">
+      <table className="w-full table-fixed">
+        <colgroup>
+          <col className="w-10" />  {/* Time */}
+          <col className="w-32" />  {/* Condition */}
+          <col className="w-28" />  {/* Temperature */}
+          <col className="w-24" />  {/* Precipitation */}
+          <col className="w-24" />  {/* Humidity */}
+          <col className="w-8" />   {/* Button */}
+        </colgroup>
         {days.map((day, index) => (
           <React.Fragment key={day.date}>
             <tr>
-              <td colSpan={6}>
+              <td colSpan={5} className="border-2">
                 <h3 key={days.length + index} className="text-lg font-medium py-2">{day.title}</h3>
               </td>
             </tr>
-            {index === 0 ? <tr>
-              <th>Time</th>
-              <th>Condition</th>
-              <th>Temperature</th>
-              <th>Precipitation</th>
-              <th>Humidity</th>
-            </tr> : null}
+            {index === 0 ? 
+              <tr className="border-2">
+                <th className="text-left">Time</th>
+                <th className="text-left">Condition</th>
+                <th className="text-left">Temperature</th>
+                <th className="text-left">Precipitation</th>
+                <th className="text-left">Humidity</th>
+                <th></th> 
+              </tr> : null}
             {items.map((item) => sortDisplay(index, item, day))}
           </React.Fragment>
         ))}
