@@ -4,6 +4,7 @@ import HourItem from "./HourItem";
 function HourDisplay({data}) {
   const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
   const nowHour = new Date().getHours();
 
   const icons = import.meta.glob('/node_modules/@meteocons/svg/monochrome/*.svg', {
@@ -68,17 +69,21 @@ function HourDisplay({data}) {
     };
   });
 
+  const convertWind = (deg) => {
+    return directions[Math.round(deg / 45) % 8];
+  } 
+
   for (let i = 0; i < hours.length; i++) {
     items.push({
       id: i + 1,
       date: hours[i].split("T")[0],
       hour: hours[i].split("T")[1].split(":")[0].replace(/^0+(?=\d)/, ""),
-      temp: h.temperature_2m[i],
+      temp: Math.floor(h.temperature_2m[i]),
       humidity: h.relative_humidity_2m[i],
       code: weatherCodes[h.weather_code[i]].desc,
       icon: getIcon(h.weather_code[i], h.is_day[i]),
-      w_dir: h.wind_direction_10m[i],
-      w_speed: h.wind_speed_10m[i],
+      w_dir: convertWind(h.wind_direction_10m[i]),
+      w_speed: Math.round(h.wind_speed_10m[i]),
       cloud: h.cloud_cover[i],
       uv: h.uv_index[i],
       precip_per: h.precipitation_probability[i]
@@ -94,7 +99,7 @@ function HourDisplay({data}) {
   }
 
   return (
-    <div className="">
+    <div>
       <table className="w-full table-fixed">
         <colgroup>
           <col className="w-15" />
@@ -109,19 +114,22 @@ function HourDisplay({data}) {
 
             {index === 0 && 
               <thead>
+                <tr className="h-2"></tr>
                 <tr>
                   <td colSpan={6}>
                     <h3 key={days.length + index} className="text-lg font-medium py-2">{day.title}</h3>
                   </td>
                 </tr>
-                <tr className="">
-                  <th className="text-left">Time</th>
-                  <th className="text-left pl-7">Condition</th>
-                  <th className="text-center">Temperature</th>
-                  <th className="text-center">Precipitation</th>
-                  <th className="text-center">Humidity</th>
+                <tr className="h-1"></tr>
+                <tr>
+                  <th className="text-left pl-2 font-normal">Time</th>
+                  <th className="text-left pl-7 font-normal">Condition</th>
+                  <th className="text-center font-normal">Temperature</th>
+                  <th className="text-center font-normal">Precipitation</th>
+                  <th className="text-center font-normal font-normal">Humidity</th>
                   <th></th>
                 </tr>
+                <tr className="h-2"></tr>
               </thead>
             }
 

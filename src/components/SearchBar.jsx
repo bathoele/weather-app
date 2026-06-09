@@ -50,9 +50,7 @@ function SearchBar({ onResults }) {
   }
 
   return (
-    <div
-      className=""
-    >
+    <div>
       <form
         className="flex gap-4"
         onSubmit={handleInput}>

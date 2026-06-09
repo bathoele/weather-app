@@ -8,7 +8,7 @@ function App() {
   const [results, setResults] = useState(null);
 
   return (
-    <div className="pt-5 bg-blue-200">
+    <div className="pt-5">
       <div className="w-200 ml-auto mr-auto">
         <SearchBar onResults={setResults} />
         {results && <DisplayContainer data={results} />}
