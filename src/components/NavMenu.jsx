@@ -9,7 +9,7 @@ function NavMenu({current, onActive}) {
   ]
 
   const setStatus = (status) => {
-    return status === current ? 'active bg-green-800 text-white border-2 border-transparent' : 'border-2 border-green-800';
+    return status === current ? 'active border-2 border-green-800' : 'border-2 border-transparent text-green-800';
   }
   
   return(
