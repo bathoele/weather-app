@@ -9,7 +9,7 @@ function NavMenu({current, onActive}) {
   ]
 
   const setStatus = (status) => {
-    return status === current ? 'active bg-green-800 text-white' : '';
+    return status === current ? 'active bg-green-800 text-white border-2 border-transparent' : 'border-2 border-green-800';
   }
   
   return(
@@ -21,7 +21,7 @@ function NavMenu({current, onActive}) {
           className="inline"
         >
           <button
-            className={`${setStatus(page.id)} rounded-full px-4 py-2 cursor-pointer font-bold transition-all duration-400`}
+            className={`${setStatus(page.id)} rounded-full px-5 py-2 cursor-pointer font-bold transition-all duration-400`}
             onClick={() => onActive(page.id)}
             >
             {page.name}

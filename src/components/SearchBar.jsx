@@ -55,7 +55,7 @@ function SearchBar({ onResults }) {
         className="inline-flex h-11"
         onSubmit={handleInput}>
         <input
-          className="border-2 border-gray-200 p-1 pl-4 rounded-l-full focus:outline-none focus:border-green-800"
+          className="border-2 border-gray-200 p-1 pl-4 rounded-l-full focus:outline-none focus:border-green-800 z-20 bg-white"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Enter city or zip"
@@ -64,7 +64,7 @@ function SearchBar({ onResults }) {
           autoComplete="off"
         />
         <button
-          className="bg-gray-200 rounded-r-full pl-2 pr-4"
+          className="bg-gray-200 rounded-r-full pl-2 pr-4 z-20 cursor-pointer"
           type="submit"
         >
           Search
@@ -72,18 +72,17 @@ function SearchBar({ onResults }) {
       </form>
 
       {open && suggestions.length > 0 && (
-        <div className="absolute">
+        <div className="absolute z-10">
           <ul
             role="listbox"
-            className="relative top-0 left-0 right-0 m-0 p-0 z-1000"
-            >
-            {suggestions.map((l) => (
+            className="relative -top-6 left-0 right-0 m-0 p-0 pt-7 bg-gray-100 rounded-b-xl overflow-hidden"
+          >
+            {suggestions.map((l, index) => (
               <li
-              key={l.id}
-              role="option"
-              // add onMouseDown action
-              onMouseDown={() => {setQuery(l); setOpen(false); handleChoice(l)}}
-              style={{ padding: "8px 12px", cursor: "pointer" }}
+                key={l.id}
+                role="option"
+                onMouseDown={() => {setQuery(l); setOpen(false); handleChoice(l)}}
+                className={`cursor-pointer py-2 px-4  bg-gray-100 ${index === 2 ? "pb-4" : ""} hover:bg-green-100`}
               >
                 {l.name}, {l.admin1}
               </li>
