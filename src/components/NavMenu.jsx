@@ -7,17 +7,21 @@ function NavMenu({current, onActive}) {
     { name: "Hourly", id: "hourly"},
     { name: "7 Day", id: "daily"}  
   ]
+
+  const setStatus = (status) => {
+    return status === current ? 'active bg-green-800 text-white' : '';
+  }
   
   return(
     <nav className="inline-flex ml-5">
-      <ul className="flex gap-4">
+      <ul className="flex gap-1">
       {pages.map((page) => (
         <li
           key={page.id}
           className="inline"
         >
           <button
-            className={page.id === current ? 'active' : ''}
+            className={`${setStatus(page.id)} rounded-full px-4 h-9 cursor-pointer font-bold`}
             onClick={() => onActive(page.id)}
             >
             {page.name}
