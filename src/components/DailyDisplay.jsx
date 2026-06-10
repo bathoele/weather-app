@@ -4,16 +4,17 @@ import DailyItem from "./DailyItem";
 function DailyDisplay({data}) {
   const dayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const d = data.daily;
-  const dates = d.time;
+  let dates = d.time;
   const items = [];
   
-  dates.map((day) => {
+  dates = dates.map((day) => {
     const date = new Date(day.replace(/-/g, "/"));
 
-    return `${dayNames[date.getDate()]} ${date.getDate()}`
+    return `${dayNames[date.getDay()]} ${date.getDate()}`
   })
 
   for (let i = 0; i < d.time.length; i++) {
+    console.log(dates[i]);
     items.push({
       id: i + 1,
       date: dates[i],

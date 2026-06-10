@@ -40,7 +40,6 @@ function SearchBar({ onResults }) {
     const res = await fetch(`http://localhost:3000/submit?lat=${encodeURIComponent(lat)}&long=${encodeURIComponent(long)}`);
     const data = await res.json();
     const resArray = {...data, ...{ name: choice.name, admin1: choice.admin1 }};
-    console.log(resArray);
     onResults(resArray);
   }
 
