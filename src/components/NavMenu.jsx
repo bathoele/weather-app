@@ -21,7 +21,7 @@ function NavMenu({current, onActive}) {
           className="inline"
         >
           <button
-            className={`${setStatus(page.id)} rounded-full px-4 h-9 cursor-pointer font-bold`}
+            className={`${setStatus(page.id)} rounded-full px-4 py-2 cursor-pointer font-bold transition-all duration-400`}
             onClick={() => onActive(page.id)}
             >
             {page.name}

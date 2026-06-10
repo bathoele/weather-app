@@ -52,10 +52,10 @@ function SearchBar({ onResults }) {
   return (
     <div className="inline">
       <form
-        className="inline-flex gap-2 h-9 border-2"
+        className="inline-flex h-9"
         onSubmit={handleInput}>
         <input
-          className="border-2 p-1"
+          className="border-2 border-gray-200 p-1 pl-4 rounded-l-full"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search..."
@@ -64,7 +64,7 @@ function SearchBar({ onResults }) {
           autoComplete="off"
         />
         <button
-          className="border-2"
+          className="bg-gray-200 rounded-r-full pl-2 pr-4"
           type="submit"
         >
           Search
@@ -72,30 +72,24 @@ function SearchBar({ onResults }) {
       </form>
 
       {open && suggestions.length > 0 && (
-        <ul
-          role="listbox"
-          style={{
-            position: "absolute",
-            top: "100%",
-            left: 0,
-            right: 0,
-            margin: 0,
-            padding: 0,
-            zIndex: 1000,
-          }}
-        >
-          {suggestions.map((l) => (
-            <li
+        <div className="absolute">
+          <ul
+            role="listbox"
+            className="relative top-0 left-0 right-0 m-0 p-0 z-1000"
+            >
+            {suggestions.map((l) => (
+              <li
               key={l.id}
               role="option"
               // add onMouseDown action
               onMouseDown={() => {setQuery(l); setOpen(false); handleChoice(l)}}
               style={{ padding: "8px 12px", cursor: "pointer" }}
-            >
-              {l.name}, {l.admin1}
-            </li>
-          ))}
-        </ul>
+              >
+                {l.name}, {l.admin1}
+              </li>
+            ))}
+          </ul>
+        </div>
       )} 
     </div>
   )
