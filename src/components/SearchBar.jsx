@@ -50,9 +50,9 @@ function SearchBar({ onResults }) {
   }
 
   return (
-    <div>
+    <div className="inline">
       <form
-        className="flex gap-4"
+        className="inline-flex gap-4 border-2"
         onSubmit={handleInput}>
         <input
           className="border-2 p-1"

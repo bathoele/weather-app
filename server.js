@@ -13,7 +13,6 @@ app.get('/search', async (req, res) => {
   const param = req.query.q;
   try {
     const response = await axios.get(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(param)}&count=3`);
-    // console.log(response.data);
     res.send(response.data);
   } catch (error) {
     console.error(error);

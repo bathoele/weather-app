@@ -8,12 +8,12 @@ function DisplayContainer({data}) {
   const [active, setActive] = useState("hourly");
 
   return(
-    <div>
+    <React.Fragment>
       <NavMenu current={active} onActive={setActive}/>
       {active == "today" ? <TodayDisplay data={data} /> : null}
       {active == "hourly" ? <HourDisplay data={data} /> : null}
       {active == "daily" ? <DailyDisplay data={data} /> : null}
-    </div>
+    </React.Fragment>
   )
 }
 

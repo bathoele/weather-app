@@ -7,23 +7,22 @@ function NavMenu({current, onActive}) {
     { name: "Hourly", id: "hourly"},
     { name: "7 Day", id: "daily"}  
   ]
-
-  const handleClick = (page) => {
-    onActive(page);
-  }
   
   return(
-    <nav>
-      <ul>
-
+    <nav className="inline-flex ml-5">
+      <ul className="flex gap-4">
       {pages.map((page) => (
-        <button
+        <li
           key={page.id}
-          className={page.id === current ? 'active' : ''}
-          onClick={() => handleClick(page.id)}
+          className="inline"
         >
-          {page.name}
-        </button>
+          <button
+            className={page.id === current ? 'active' : ''}
+            onClick={() => onActive(page.id)}
+            >
+            {page.name}
+          </button>
+        </li>
       ))}
       </ul>
         
