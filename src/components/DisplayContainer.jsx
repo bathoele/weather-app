@@ -44,7 +44,7 @@ function DisplayContainer({data}) {
     99: { desc: "Thunderstorm with Heavy Hail",  icon: "thunderstorms-day-extreme-rain" },
   };
 
-  const serveIcon = (code, isDay) => {
+  const getIcon = (code, isDay) => {
     const slug = weatherCodes[code].icon;
     const name = isDay ? slug : slug.replace("day", "night");
     return icons[`/node_modules/@meteocons/svg/fill/${name}.svg`];
@@ -57,8 +57,8 @@ function DisplayContainer({data}) {
         {data.name}, {data.admin1}
       </div>
       {active === "today" ? <TodayDisplay data={data} /> : null}
-      {active === "hourly" ? <HourDisplay data={data} getIcon={serveIcon} weatherCodes={weatherCodes} /> : null}
-      {active === "daily" ? <DailyDisplay data={data} getIcon={serveIcon} weatherCodes={weatherCodes} /> : null}
+      {active === "hourly" ? <HourDisplay data={data} getIcon={getIcon} weatherCodes={weatherCodes} /> : null}
+      {active === "daily" ? <DailyDisplay data={data} getIcon={getIcon} weatherCodes={weatherCodes} /> : null}
     </React.Fragment>
   )
 }

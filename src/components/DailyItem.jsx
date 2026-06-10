@@ -3,42 +3,48 @@ import React from "react";
 function DailyItem({data: d}) {
   
   return (
-    <ul>
-      <li>
-        {d.date}
-      </li>
-      <li>
-        {d.max_temp}
-      </li>
-      <li>
-        {d.min_temp}
-      </li>
-      <li>
-        {d.code}
-      </li>
-      <li>
-        {d.precip_per}
-      </li>
-      <li>
-        {d.precip_sum}
-      </li>
-      <li>
-        {d.w_dir}
-      </li>
-      <li>
-        {d.w_speed}
-      </li>
-      <li>
-        <ul>
-          <li>
+    <div className="border-b-2 border-gray-300 p-2 mb-3 flex">
+      <div className="gap-2 grid grid-cols-3">
+        <span className="font-bold text-lg">
+          {d.date}
+        </span>
+        <span className="text-xl col-span-2">
+          {Math.floor(d.max_temp)}&deg; <span className="text-sm">/</span> {Math.floor(d.min_temp)}&deg;
+        </span>
+        <span className="">
+          <img
+          className="inline w-17 h-17 mr-2"
+          src={d.icon}
+          alt={d.code}
+          />
+        </span>
+        <span className="col-span-2 w-30">
+          {d.code}
+        </span>
+      </div>
+      <div>
+        <span>
+          {d.precip_per}
+        </span>
+        <span>
+          {d.precip_sum}
+        </span>
+        <span>
+          {d.w_dir}
+        </span>
+        <span>
+          {d.w_speed}
+        </span>
+        <div>
+          <span>
             {d.uv}
-          </li>
-          <li>
+          </span>
+          <span>
             {d.humidity}
-          </li>
-        </ul>
-      </li>
-    </ul>
+          </span>
+        </div>
+      </div>
+    </div>
   )
 }
 

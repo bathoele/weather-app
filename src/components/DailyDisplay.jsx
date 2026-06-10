@@ -1,7 +1,7 @@
 import React from "react";
 import DailyItem from "./DailyItem";
 
-function DailyDisplay({data}) {
+function DailyDisplay({ data, getIcon, weatherCodes}) {
   const dayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   const d = data.daily;
   let dates = d.time;
@@ -14,14 +14,14 @@ function DailyDisplay({data}) {
   })
 
   for (let i = 0; i < d.time.length; i++) {
-    console.log(dates[i]);
     items.push({
       id: i + 1,
       date: dates[i],
       max_temp: d.temperature_2m_max[i],
       min_temp: d.temperature_2m_min[i],
       humidity: d.relative_humidity_2m_max[i],
-      code: d.weather_code[i],
+      code: weatherCodes[d.weather_code[i]].desc,
+      icon: getIcon(d.weather_code[i], 1),
       w_dir: d.wind_direction_10m_dominant[i],
       w_speed: d.wind_speed_10m_max,
       uv: d.uv_index_max[i],
