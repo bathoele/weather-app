@@ -7,12 +7,11 @@ function HourDisplay({data}) {
   const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
   const nowHour = new Date().getHours();
 
-  const icons = import.meta.glob('/node_modules/@meteocons/svg/monochrome/*.svg', {
+  const icons = import.meta.glob('/node_modules/@meteocons/svg/fill/*.svg', {
     eager: true,
     query: '?url',
     import: 'default'
   })
-  // FIX THISS
 
   const weatherCodes = {
     0:  { desc: "Clear Sky",                     icon: "clear-day" },
@@ -48,7 +47,7 @@ function HourDisplay({data}) {
   const getIcon = (code, isDay) => {
     const slug = weatherCodes[code].icon;
     const name = isDay ? slug : slug.replace("day", "night");
-    return icons[`/node_modules/@meteocons/svg/monochrome/${name}.svg`];
+    return icons[`/node_modules/@meteocons/svg/fill/${name}.svg`];
   }
   
   const h = data.hourly;
@@ -114,19 +113,19 @@ function HourDisplay({data}) {
 
             {index === 0 && 
               <thead>
-                <tr className="h-2"></tr>
+                <tr className="h-5"></tr>
                 <tr>
                   <td colSpan={6}>
-                    <h3 key={days.length + index} className="text-lg font-medium py-2">{day.title}</h3>
+                    <h3 key={days.length + index} className="text-lg font-medium">{day.title}</h3>
                   </td>
                 </tr>
-                <tr className="h-1"></tr>
+                <tr className="h-5"></tr>
                 <tr>
-                  <th className="text-left pl-2 font-normal">Time</th>
-                  <th className="text-left pl-7 font-normal">Condition</th>
-                  <th className="text-center font-normal">Temperature</th>
-                  <th className="text-center font-normal">Precipitation</th>
-                  <th className="text-center font-normal font-normal">Humidity</th>
+                  <th className="text-left pl-2  font-medium text-sm text-gray-500">Time</th>
+                  <th className="text-left pl-7  font-medium text-sm text-gray-500">Condition</th>
+                  <th className="text-center  font-medium text-sm text-gray-500">Temperature</th>
+                  <th className="text-center  font-medium text-sm text-gray-500">Precipitation</th>
+                  <th className="text-center  font-medium text-sm text-gray-500">Humidity</th>
                   <th></th>
                 </tr>
                 <tr className="h-2"></tr>
@@ -137,7 +136,7 @@ function HourDisplay({data}) {
             {index !== 0 &&
               <tr>
                 <td colSpan={6}>
-                  <h3 key={days.length + index} className="text-lg font-medium py-2">{day.title}</h3>
+                  <h3 key={days.length + index} className="text-lg font-medium py-4">{day.title}</h3>
                 </td>
               </tr>
             }

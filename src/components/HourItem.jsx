@@ -12,7 +12,7 @@ function HourItem({data: d}) {
 
   return (
     <React.Fragment>
-      <tr className="bg-gray-200 border-transparent border-y-5 rounded-2x1">
+      <tr className="border-transparent rounded-2x1">
         <td className="font-semibold pt-2 pb-2 pl-3 text-lg">{hour}</td>
         <td className="pt-2 pb-2">
           <div className="flex items-center gap-2">
@@ -25,16 +25,16 @@ function HourItem({data: d}) {
             <span>{d.code}</span>
           </div>
         </td>
-        <td className="text-center pt-2 pb-2">{d.temp}</td>
+        <td className="text-center pt-2 pb-2">{d.temp}&deg;</td>
         <td className="text-center pt-2 pb-2">{d.precip_per}%</td>
         <td className="text-center pt-2 pb-2">{d.humidity}%</td>
         <td className="w-8 pt-2 pb-2">  
           <button
           onClick={() => setIsOpen(!isOpen)}
-          className="cursor-pointer "
+          className="cursor-pointer w-7 h-7 justify-center"
           >      
             <svg
-              className={`w-4 h-4 transform transition duration-300 ${isOpen ? "rotate-180" : "rotate-0"}`}
+              className={`w-6 h-6 mt-2 transform transition duration-300 ${isOpen ? "rotate-180" : "rotate-0"}`}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -44,19 +44,21 @@ function HourItem({data: d}) {
           </button>
         </td>
       </tr>
-      <tr className="bg-gray-200">
+      <tr className="">
         <td colSpan={6} className="p-0">
           <div className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-48" : "max-h-0"}`}>
             <table className="ml-5">
               <thead>
+                <tr className="h-2"></tr>
                 <tr>
                   <th className="w-15"></th>
-                  <th className="w-45 text-center font-normal">Wind</th>
-                  <th className="w-55 text-center font-normal">Cloud Cover</th>
-                  <th className="w-20 text-center font-normal">UV Index</th>
+                  <th className="w-45 text-center font-medium text-sm text-gray-500">Wind</th>
+                  <th className="w-55 text-center font-medium text-sm text-gray-500">Cloud Cover</th>
+                  <th className="w-20 text-center font-medium text-sm text-gray-500">UV Index</th>
                   <th></th>
                   <th></th>
                 </tr>
+                <tr className="h-2"></tr>
               </thead>
               <tbody>
                 <tr>
@@ -67,13 +69,13 @@ function HourItem({data: d}) {
                   <td></td>
                   <td></td>
                 </tr>
-                <tr className="h-5"></tr>
+                <tr className="h-4"></tr>
               </tbody>
             </table>
           </div>
         </td>
       </tr>
-      <tr className="h-2"></tr>
+      {hour !== "11pm" ? <tr className="border-b-2 border-gray-200"></tr> : <tr className="h-2"></tr>}
     </React.Fragment>
   )
 }
