@@ -52,13 +52,13 @@ function SearchBar({ onResults }) {
   return (
     <div className="inline">
       <form
-        className="inline-flex h-9"
+        className="inline-flex h-11"
         onSubmit={handleInput}>
         <input
-          className="border-2 border-gray-200 p-1 pl-4 rounded-l-full"
+          className="border-2 border-gray-200 p-1 pl-4 rounded-l-full focus:outline-none focus:border-green-800"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search..."
+          placeholder="Enter city or zip"
           onFocus={() => suggestions.length > 0 && setOpen(true)}
           onBlur={() => setTimeout(() => setOpen(false), 150)}
           autoComplete="off"
