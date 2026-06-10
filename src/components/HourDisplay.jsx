@@ -78,11 +78,11 @@ function HourDisplay({data, getIcon, weatherCodes}) {
                 </tr>
                 <tr className="h-5"></tr>
                 <tr>
-                  <th className="text-left pl-2  font-medium text-sm text-gray-500">Time</th>
-                  <th className="text-left pl-7  font-medium text-sm text-gray-500">Condition</th>
-                  <th className="text-center  font-medium text-sm text-gray-500">Temperature</th>
-                  <th className="text-center  font-medium text-sm text-gray-500">Precipitation</th>
-                  <th className="text-center  font-medium text-sm text-gray-500">Humidity</th>
+                  <th className="text-left pl-2 font-medium text-sm text-gray-500">Time</th>
+                  <th className="text-left pl-7 font-medium text-sm text-gray-500">Condition</th>
+                  <th className="text-center font-medium text-sm text-gray-500">Temperature</th>
+                  <th className="text-center font-medium text-sm text-gray-500">Precipitation</th>
+                  <th className="text-center font-medium text-sm text-gray-500">Humidity</th>
                   <th></th>
                 </tr>
                 <tr className="h-2"></tr>

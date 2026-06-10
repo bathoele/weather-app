@@ -22,26 +22,22 @@ function DailyItem({data: d}) {
           {d.code}
         </span>
       </div>
-      <div>
-        <span>
-          {d.precip_per}
-        </span>
-        <span>
-          {d.precip_sum}
-        </span>
-        <span>
-          {d.w_dir}
-        </span>
-        <span>
-          {d.w_speed}
-        </span>
+      <div className="grid grid-cols-3 gap-8 w-120 gap-y-4 pb-2">
+        <div className="flex flex-col">
+          <div className="font-light text-sm text-gray-600">Precipitation</div>
+          <span>{d.precip_per}% {d.precip_sum}in</span>
+        </div>
         <div>
-          <span>
-            {d.uv}
-          </span>
-          <span>
-            {d.humidity}
-          </span>
+          <div className="font-light text-sm text-gray-600">Wind</div>
+          <span>{Math.floor(d.w_speed)}mph {d.w_dir}</span>
+        </div>
+        <div>
+          <div className="font-light text-sm text-gray-600">Humidity</div>
+          <span>{d.humidity}%</span>
+        </div>
+        <div>
+          <div className="font-light text-sm text-gray-600">UV Index</div>
+          <span>{d.uv}</span>
         </div>
       </div>
     </div>
