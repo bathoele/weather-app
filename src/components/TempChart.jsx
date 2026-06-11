@@ -5,24 +5,26 @@ import {
 
 function TempChart({data, getIcon}) {
   const h = data.hourly;
-  let hoursArr = [];
 
   const formatTime = (time) => {
-    let hour = time.split("T")[1].split(":")[0];
-    const newHour = (hour % 12) || 12;
+    const hour = (time % 12) || 12;
 
-    return `${newHour}${hour >= 12 ? "pm" : "am"}`;
+    return `${hour}${time >= 12 ? "pm" : "am"}`;
   }
-  
-  for (let i = 0; i < 12; i++) {
-    hoursArr.push(
-      {
-        time: formatTime(h.time[i]),
-        temp: Math.floor(h.temperature_2m[i]),
-        icon: getIcon(h.weather_code[i], h.is_day[i]),
-      }
-    );
-  };
+
+  const date = new Date();
+
+  let hoursArr = [];
+  for (const [index, hour] of h.time.entries()) {
+    if (hoursArr.length === 14) break;
+    if (new Date(hour).getHours() >= date.getHours() || new Date(hour).getDate() > date.getDate()) {
+      hoursArr.push({
+        time: formatTime(hour.split("T")[1].split(":")[0]),
+        temp: Math.floor(h.temperature_2m[index]),
+        icon: getIcon(h.weather_code[index], h.is_day[index])
+      });
+    };
+  }
 
   const iconMap = Object.fromEntries(hoursArr.map(d => [d.time, d.icon]));
 
@@ -43,8 +45,8 @@ function TempChart({data, getIcon}) {
   return (
     <div className="mt-5">
       <ResponsiveContainer width="100%" height={225}>
-        <LineChart data={hoursArr} margin={{ left: 40, right: 40 }}>
-          <CartesianGrid  strokeDasharray={0} horizontal={false} vertical={true} />
+        <LineChart data={hoursArr} margin={{ left: 40, right: 40, top: 10 }}>
+          <CartesianGrid  strokeDasharray={0} horizontal={false} vertical={true} stroke="#eaeaea" />
 
           <XAxis xAxisId="icons" dataKey="time" tick={<IconTick />} tickLine={false} axisLine={false} height={40} />
           <XAxis xAxisId="labels" dataKey="time" tick={<TimeTick />} tickLine={false} axisLine={false} height={30} orientation="bottom" />
@@ -56,6 +58,10 @@ function TempChart({data, getIcon}) {
             type="monotone"
             dataKey="temp"
             label={{ position: "top", offset: 15, fontSize: 20, fill: "black", formatter: v => `${v}°`}}
+            stroke="green"
+            strokeWidth={2}
+            dot={{ r: 3, fill: "green" }}
+            isAnimationActive={false}
           />
         </LineChart>
       </ResponsiveContainer>
