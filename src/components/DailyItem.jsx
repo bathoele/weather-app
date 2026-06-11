@@ -25,7 +25,7 @@ function DailyItem({data: d}) {
       <div className="grid grid-cols-3 gap-8 w-120 gap-y-4 pb-2">
         <div className="flex flex-col">
           <div className="font-light text-sm text-gray-600">Precipitation</div>
-          <span>{d.precip_per}% {d.precip_sum}in</span>
+          <span>{d.precip_per}% | {Math.round(d.precip_sum * 10) / 10}in</span>
         </div>
         <div>
           <div className="font-light text-sm text-gray-600">Wind</div>
@@ -35,9 +35,23 @@ function DailyItem({data: d}) {
           <div className="font-light text-sm text-gray-600">Humidity</div>
           <span>{d.humidity}%</span>
         </div>
+        <div className="text-center flex gap-2">
+          <div>
+            <div className="font-light text-sm text-gray-600">Sunrise</div>
+            <div>{d.sunrise}</div>
+          </div>
+          <div>
+            <div className="font-light text-sm text-gray-600">-</div>
+            <div>-</div>
+          </div>
+          <div>
+            <div className="font-light text-sm text-gray-600">Sunset</div>
+            <div>{d.sunset}</div>
+          </div>
+        </div>
         <div>
           <div className="font-light text-sm text-gray-600">UV Index</div>
-          <span>{d.uv}</span>
+          <span>{Math.round(d.uv * 10) / 10}</span>
         </div>
       </div>
     </div>

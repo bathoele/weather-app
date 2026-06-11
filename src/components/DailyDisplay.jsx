@@ -18,6 +18,13 @@ function DailyDisplay({ data, getIcon, weatherCodes}) {
     return directions[Math.round(deg / 45) % 8];
   }
 
+  const formatTime = (time) => {
+    let [hour, mins] = time.split("T")[1].split(":");
+    hour = (hour % 12) || 12;
+
+    return `${hour}:${mins}`;
+  }
+
   for (let i = 0; i < d.time.length; i++) {
     items.push({
       id: i + 1,
@@ -31,7 +38,9 @@ function DailyDisplay({ data, getIcon, weatherCodes}) {
       w_speed: d.wind_speed_10m_max[i],
       uv: d.uv_index_max[i],
       precip_per: d.precipitation_probability_max[i],
-      precip_sum: d.precipitation_sum[i]
+      precip_sum: d.precipitation_sum[i],
+      sunrise: formatTime(d.sunrise[i]),
+      sunset: formatTime(d.sunset[i])
     });
   }
   
