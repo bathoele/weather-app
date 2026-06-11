@@ -70,7 +70,6 @@ function HourDisplay({data, getIcon, weatherCodes}) {
 
             {index === 0 && 
               <thead>
-                <tr className="h-5"></tr>
                 <tr>
                   <td colSpan={6}>
                     <h3 key={days.length + index} className="text-lg font-medium">{day.title}</h3>

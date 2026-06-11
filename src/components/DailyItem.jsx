@@ -8,8 +8,8 @@ function DailyItem({data: d}) {
         <span className="font-bold text-lg">
           {d.date}
         </span>
-        <span className="text-xl col-span-2">
-          {Math.floor(d.max_temp)}&deg; <span className="text-sm">/</span> {Math.floor(d.min_temp)}&deg;
+        <span className="text-2xl col-span-2">
+          <span className="text-3xl">{Math.floor(d.max_temp)}&deg;</span> / {Math.floor(d.min_temp)}&deg;
         </span>
         <span className="">
           <img
@@ -22,10 +22,10 @@ function DailyItem({data: d}) {
           {d.code}
         </span>
       </div>
-      <div className="grid grid-cols-3 gap-8 w-120 gap-y-4 pb-2">
+      <div className="grid grid-cols-3 w-120 gap-y-4 pb-2">
         <div className="flex flex-col">
           <div className="font-light text-sm text-gray-600">Precipitation</div>
-          <span>{d.precip_per}% | {Math.round(d.precip_sum * 10) / 10}in</span>
+          <span>{d.precip_per}%&ensp;|&ensp;{Math.round(d.precip_sum * 10) / 10}in</span>
         </div>
         <div>
           <div className="font-light text-sm text-gray-600">Wind</div>

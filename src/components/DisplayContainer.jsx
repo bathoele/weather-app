@@ -53,7 +53,7 @@ function DisplayContainer({data}) {
   return(
     <React.Fragment>
       <NavMenu current={active} onActive={setActive}/>
-      <div className="font-bold text-xl mt-6">
+      <div className="font-bold text-xl my-6">
         {data.name}, {data.admin1}
       </div>
       {active === "today" ? <TodayDisplay data={data} /> : null}
