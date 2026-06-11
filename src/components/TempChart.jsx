@@ -6,12 +6,18 @@ import {
 function TempChart({data, getIcon}) {
   const h = data.hourly;
   let hoursArr = [];
-  
 
+  const formatTime = (time) => {
+    let hour = time.split("T")[1].split(":")[0];
+    const newHour = (hour % 12) || 12;
+
+    return `${newHour}${hour >= 12 ? "pm" : "am"}`;
+  }
+  
   for (let i = 0; i < 12; i++) {
     hoursArr.push(
       {
-        time: h.time[i].split("T")[1],
+        time: formatTime(h.time[i]),
         temp: Math.floor(h.temperature_2m[i]),
         icon: getIcon(h.weather_code[i], h.is_day[i]),
       }
@@ -31,14 +37,14 @@ function TempChart({data, getIcon}) {
   )
 
   const TimeTick = ({ x, y, payload }) => (
-    <text x={x} y={y + 16} textAnchor="middle">{payload.value}</text>
+    <text x={x} y={y + 16} className="text-sm" textAnchor="middle">{payload.value}</text>
   )
 
   return (
-    <div>
-      <ResponsiveContainer width="100%" height={300}>
-        <LineChart data={hoursArr}>
-          <CartesianGrid strokeDasharray="3 3" />
+    <div className="mt-5">
+      <ResponsiveContainer width="100%" height={225}>
+        <LineChart data={hoursArr} margin={{ left: 40, right: 40 }}>
+          <CartesianGrid  strokeDasharray={0} horizontal={false} vertical={true} />
 
           <XAxis xAxisId="icons" dataKey="time" tick={<IconTick />} tickLine={false} axisLine={false} height={40} />
           <XAxis xAxisId="labels" dataKey="time" tick={<TimeTick />} tickLine={false} axisLine={false} height={30} orientation="bottom" />
@@ -49,8 +55,7 @@ function TempChart({data, getIcon}) {
             xAxisId="labels"
             type="monotone"
             dataKey="temp"
-            label={{ position: "top", fontSize: 11, fill: "#f97316", formatter: v => `${v}°`}}
-
+            label={{ position: "top", offset: 15, fontSize: 20, fill: "black", formatter: v => `${v}°`}}
           />
         </LineChart>
       </ResponsiveContainer>
