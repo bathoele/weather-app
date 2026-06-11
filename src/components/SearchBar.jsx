@@ -56,7 +56,7 @@ function SearchBar({ onResults }) {
         className="inline-flex h-11"
         onSubmit={handleInput}>
         <input
-          className="border-2 border-gray-200 p-1 pl-4 rounded-l-full focus:outline-none focus:border-green-800 z-20 bg-white"
+          className="border-2 border-gray-200 p-1 pl-4 rounded-l-full focus:outline-none focus:border-orange-400 z-20 bg-white"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Enter city or zip"
@@ -83,7 +83,7 @@ function SearchBar({ onResults }) {
                 key={l.id}
                 role="option"
                 onMouseDown={() => {setQuery(l); setOpen(false); handleChoice(l)}}
-                className={`cursor-pointer py-2 px-4  bg-gray-100 ${index === 2 ? "pb-4" : ""} hover:bg-green-100`}
+                className={`cursor-pointer py-2 px-4  bg-gray-100 ${index === 2 ? "pb-4" : ""} hover:bg-orange-100`}
               >
                 {l.name}, {l.admin1}
               </li>

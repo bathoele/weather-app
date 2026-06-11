@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
+  LineChart, Line, XAxis, YAxis, CartesianGrid, ResponsiveContainer
 } from "recharts";
 
 function TempChart({data, getIcon}) {
@@ -58,9 +58,10 @@ function TempChart({data, getIcon}) {
             type="monotone"
             dataKey="temp"
             label={{ position: "top", offset: 15, fontSize: 20, fill: "black", formatter: v => `${v}°`}}
-            stroke="green"
+            stroke="darkorange"
             strokeWidth={2}
-            dot={{ r: 3, fill: "green" }}
+            dot={{ r: 3, fill: "darkorange" }}
+            activeDot={false}
             isAnimationActive={false}
           />
         </LineChart>
