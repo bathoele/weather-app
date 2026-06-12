@@ -73,7 +73,7 @@ function SearchBar({ onResults }) {
       </form>
 
       {open && suggestions.length > 0 && (
-        <div className="absolute z-10">
+        <div className="absolute z-10 w-fit">
           <ul
             role="listbox"
             className="relative -top-6 left-0 right-0 m-0 p-0 pt-7 bg-gray-100 rounded-b-xl overflow-hidden"

@@ -50,15 +50,22 @@ function DisplayContainer({data}) {
     return icons[`/node_modules/@meteocons/svg/fill/${name}.svg`];
   }
 
+  const formatTime = (time) => {
+    let [hour, mins] = time.split("T")[1].split(":");
+    hour = (hour % 12) || 12;
+
+    return `${hour}:${mins}`;
+  }
+
   return(
     <React.Fragment>
       <NavMenu current={active} onActive={setActive}/>
       <div className="font-bold text-xl my-6">
         {data.name}, {data.admin1}
       </div>
-      {active === "today" ? <TodayDisplay data={data} getIcon={getIcon} weatherCodes={weatherCodes} /> : null}
+      {active === "today" ? <TodayDisplay data={data} getIcon={getIcon} weatherCodes={weatherCodes} formatTime={formatTime} /> : null}
       {active === "hourly" ? <HourDisplay data={data} getIcon={getIcon} weatherCodes={weatherCodes} /> : null}
-      {active === "daily" ? <DailyDisplay data={data} getIcon={getIcon} weatherCodes={weatherCodes} /> : null}
+      {active === "daily" ? <DailyDisplay data={data} getIcon={getIcon} weatherCodes={weatherCodes} formatTime={formatTime} /> : null}
     </React.Fragment>
   )
 }
