@@ -43,7 +43,7 @@ function TempChart({data, getIcon}) {
   )
 
   return (
-    <div className="mt-5 col-span-5">
+    <div className="mt-8 col-span-5">
       <ResponsiveContainer width="100%" height={225}>
         <LineChart data={hoursArr} margin={{ left: 40, right: 40, top: 10 }}>
           <CartesianGrid  strokeDasharray={0} horizontal={false} vertical={true} stroke="#eaeaea" />

@@ -5,9 +5,13 @@ import DailyDisplay from "./DailyDisplay";
 import NavMenu from "./NavMenu";
 
 function DisplayContainer({data}) {
+  const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
   const [active, setActive] = useState("hourly");
 
-  const icons = import.meta.glob('/node_modules/@meteocons/svg/fill/*.svg', {
+  const icons = import.meta.glob([
+      '/node_modules/@meteocons/svg/fill/*.svg',
+      '/node_modules/@meteocons/svg-static/fill/*.svg'
+    ], {
     eager: true,
     query: '?url',
     import: 'default'
@@ -44,10 +48,10 @@ function DisplayContainer({data}) {
     99: { desc: "Thunderstorm with Heavy Hail",  icon: "thunderstorms-day-extreme-rain" },
   };
 
-  const getIcon = (code, isDay) => {
+  const getIcon = (code, isDay, format = "svg") => {
     const slug = weatherCodes[code].icon;
     const name = isDay ? slug : slug.replace("day", "night");
-    return icons[`/node_modules/@meteocons/svg/fill/${name}.svg`];
+    return icons[`/node_modules/@meteocons/${format}/fill/${name}.svg`];
   }
 
   const formatTime = (time) => {
@@ -57,15 +61,19 @@ function DisplayContainer({data}) {
     return `${hour}:${mins}`;
   }
 
+  const convertWind = (deg) => {
+    return directions[Math.round(deg / 45) % 8];
+  }
+
   return(
     <React.Fragment>
       <NavMenu current={active} onActive={setActive}/>
       <div className="font-bold text-xl my-6">
         {data.name}, {data.admin1}
       </div>
-      {active === "today" ? <TodayDisplay data={data} getIcon={getIcon} weatherCodes={weatherCodes} formatTime={formatTime} /> : null}
-      {active === "hourly" ? <HourDisplay data={data} getIcon={getIcon} weatherCodes={weatherCodes} /> : null}
-      {active === "daily" ? <DailyDisplay data={data} getIcon={getIcon} weatherCodes={weatherCodes} formatTime={formatTime} /> : null}
+      {active === "today" ? <TodayDisplay data={data} getIcon={getIcon} weatherCodes={weatherCodes} formatTime={formatTime} convertWind={convertWind}/> : null}
+      {active === "hourly" ? <HourDisplay data={data} getIcon={getIcon} weatherCodes={weatherCodes} convertWind={convertWind}/> : null}
+      {active === "daily" ? <DailyDisplay data={data} getIcon={getIcon} weatherCodes={weatherCodes} formatTime={formatTime} convertWind={convertWind}/> : null}
     </React.Fragment>
   )
 }

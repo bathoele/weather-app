@@ -1,10 +1,9 @@
 import React from "react";
 import HourItem from "./HourItem";
 
-function HourDisplay({data, getIcon, weatherCodes}) {
+function HourDisplay({data, getIcon, weatherCodes, convertWind}) {
   const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
   const nowHour = new Date().getHours();
   
   const h = data.hourly;
@@ -24,10 +23,6 @@ function HourDisplay({data, getIcon, weatherCodes}) {
       date: day
     };
   });
-
-  const convertWind = (deg) => {
-    return directions[Math.round(deg / 45) % 8];
-  }
 
   for (let i = 0; i < hours.length; i++) {
     items.push({

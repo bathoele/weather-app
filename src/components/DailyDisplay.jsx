@@ -1,9 +1,8 @@
 import React from "react";
 import DailyItem from "./DailyItem";
 
-function DailyDisplay({ data, getIcon, weatherCodes, formatTime}) {
+function DailyDisplay({ data, getIcon, weatherCodes, formatTime, convertWind}) {
   const dayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-  const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
   const d = data.daily;
   let dates = d.time;
   const items = [];
@@ -13,10 +12,6 @@ function DailyDisplay({ data, getIcon, weatherCodes, formatTime}) {
 
     return `${dayNames[date.getDay()]} ${date.getDate()}`
   })
-
-  const convertWind = (deg) => {
-    return directions[Math.round(deg / 45) % 8];
-  }
 
   for (let i = 0; i < d.time.length; i++) {
     items.push({
