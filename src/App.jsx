@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="pt-5">
-      <div className="w-200 ml-auto mr-auto">
+      <div className={`ml-auto mr-auto ${results === null ? "w-75" : "w-200"}`}>
         <SearchBar onResults={setResults} />
         {results && <DisplayContainer data={results} />}
       </div>
