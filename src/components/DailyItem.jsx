@@ -4,7 +4,7 @@ function DailyItem({data: d}) {
   
   return (
     <div className="pt-2 mb-3 flex">
-      <div className="bg-gray-200">
+      <div className="bg-gray-100">
         <div className="gap-2 grid grid-cols-3 bg-white pb-3 rounded-br-2xl">
           <span className="font-bold text-lg">
             {d.date}
@@ -23,9 +23,9 @@ function DailyItem({data: d}) {
             {d.code}
           </span>
         </div>
-        <div className="bg-gray-200 w-3 h-3 relative rounded-l-full -left-2"></div>
+        <div className="bg-gray-100 w-3 h-3 relative rounded-l-full -left-2"></div>
       </div>
-      <div className="bg-gray-200 p-4 pb-3 rounded-t-xl rounded-br-xl">
+      <div className="bg-gray-100 p-4 pb-3 rounded-t-xl rounded-br-xl">
         <div className="grid grid-cols-3 gap-2 gap-y-5 w-85">
           <div className="flex flex-col">
             <div className="text-sm text-gray-500">Precip.</div>
