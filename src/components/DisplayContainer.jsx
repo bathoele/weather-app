@@ -6,7 +6,7 @@ import NavMenu from "./NavMenu";
 
 function DisplayContainer({data}) {
   const directions = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"];
-  const [active, setActive] = useState("hourly");
+  const [active, setActive] = useState("today");
 
   const icons = import.meta.glob([
       '/node_modules/@meteocons/svg/fill/*.svg',
