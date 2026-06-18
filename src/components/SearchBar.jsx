@@ -18,7 +18,7 @@ function SearchBar({ onResults }) {
     // clears the timeout of the current debounce setTimeout below
     clearTimeout(deboRef.current);
     deboRef.current = setTimeout(async () => {
-      const res = await fetch(`http://localhost:3000/search?q=${encodeURIComponent(query)}`);
+      const res = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(query)}&count=3`);
       const data = await res.json();
       const results = data.results || [];
 
@@ -37,7 +37,7 @@ function SearchBar({ onResults }) {
     const lat = choice.latitude;
     const long = choice.longitude;
 
-    const res = await fetch(`http://localhost:3000/submit?lat=${encodeURIComponent(lat)}&long=${encodeURIComponent(long)}`);
+    const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${encodeURIComponent(lat)}&longitude=${encodeURIComponent(long)}&daily=weather_code,temperature_2m_max,temperature_2m_min,uv_index_max,precipitation_sum,precipitation_probability_max,wind_speed_10m_max,wind_direction_10m_dominant,relative_humidity_2m_max,sunrise,sunset&hourly=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,wind_direction_10m,cloud_cover,uv_index,precipitation_probability,is_day&current=temperature_2m&wind_speed_unit=mph&temperature_unit=fahrenheit&precipitation_unit=inch&timezone=auto`);
     const data = await res.json();
     const resArray = {...data, ...{ name: choice.name, admin1: choice.admin1 }};
     onResults(resArray);
